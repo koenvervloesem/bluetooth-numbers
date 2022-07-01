@@ -1,0 +1,6 @@
+# noqa: E501
+company = {  # 16-bit company IDs{% for code, name in cics.items() %}
+    {{ code }}: "{{ name }}",
+{%- endfor %}
+}
+
