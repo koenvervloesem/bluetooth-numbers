@@ -4,3 +4,4 @@ jinja2
 mypy
 pyproject-flake8
 pytest
+wheel
