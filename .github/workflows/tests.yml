@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.4.0
+        with:
+          submodules: recursive
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2.3.1
         with:
@@ -27,4 +29,4 @@ jobs:
       - name: Test code
         run: make test
       - name: Make package
-        run: make package 
+        run: make package
