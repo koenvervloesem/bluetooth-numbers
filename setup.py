@@ -8,7 +8,7 @@ project_dir = Path(__file__).parent
 
 setuptools.setup(
     name="bluetooth-numbers",
-    version="0.1.0",
+    version="0.1.2",
     description="Database of all relevant numbers in the Bluetooth specification",
     long_description=project_dir.joinpath("README.md").read_text(encoding="utf-8"),
     long_description_content_type="text/markdown",
