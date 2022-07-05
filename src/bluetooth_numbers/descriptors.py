@@ -17,5 +17,6 @@ descriptor = UUIDDict(
         0x290C: "Environmental Sensing Measurement",
         0x290D: "Environmental Sensing Trigger Setting",
         0x290E: "Time Trigger Setting",
+        0x290F: "Complete BR-EDR Transport Block Data",
     }
 )
