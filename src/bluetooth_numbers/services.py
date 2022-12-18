@@ -137,5 +137,6 @@ service = UUIDDict(
             "F000FFC0-0451-4000-B000-000000000000"
         ): "Texas Instruments Over-the-Air Download (OAD) Service",
         UUID("0FDA92B2-44A2-4AF2-84F5-FA682BAA2B8D"): "Helium Hotspot Custom Service",
+        UUID("54220000-F6A5-4007-A371-722F4EBD8436"): "Memfault Diagnostic Service",
     }
 )

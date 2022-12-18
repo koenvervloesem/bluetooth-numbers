@@ -623,5 +623,20 @@ characteristic = UUIDDict(
         UUID(
             "E125BDA4-6FB8-11EA-BC55-0242AC130003"
         ): "Helium Hotspot WiFi Configured Services",
+        UUID(
+            "54220001-F6A5-4007-A371-722F4EBD8436"
+        ): "MDS Supported Features Characteristic",
+        UUID(
+            "54220002-F6A5-4007-A371-722F4EBD8436"
+        ): "MDS Device Identifier Characteristic",
+        UUID(
+            "54220003-F6A5-4007-A371-722F4EBD8436"
+        ): "MDS Device Data URI Characteristic",
+        UUID(
+            "54220004-F6A5-4007-A371-722F4EBD8436"
+        ): "MDS Device Authorization Characteristic",
+        UUID(
+            "54220005-F6A5-4007-A371-722F4EBD8436"
+        ): "MDS Device Data Export Characteristic",
     }
 )
