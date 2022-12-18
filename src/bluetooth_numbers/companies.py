@@ -1,5 +1,7 @@
 # noqa: E501
-company = {  # 16-bit company IDs
+from typing import Dict
+
+company: Dict[int, str] = {  # 16-bit company IDs
     0x0000: "Ericsson Technology Licensing",
     0x0001: "Nokia Mobile Phones",
     0x0002: "Intel Corp.",
