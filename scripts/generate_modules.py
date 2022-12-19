@@ -98,7 +98,12 @@ def generate_cic_module(cic_dict: Dict[int, str]) -> None:
 
 # Generate modules for UUIDs
 service_uuid16, service_uuid128 = generate_uuid_dictionaries("service")
+member_service_uuid16 = generate_uuid16_dictionary("member_service")
 sdo_service_uuid16 = generate_uuid16_dictionary("sdo_service")
+# Don't let the UUIDs from the Assigned Numbers document overwrite the ones from the
+# Bluetooth Numbers Database because the latter has the names of the services, which give
+# more information than the names of the companies in the Assigned Numbers document.
+service_uuid16.update({key: value for key, value in member_service_uuid16.items() if not key in service_uuid16})
 service_uuid16.update(sdo_service_uuid16)
 generate_uuid_module("service", service_uuid16, service_uuid128)
 characteristic_uuid16, characteristic_uuid128 = generate_uuid_dictionaries(
