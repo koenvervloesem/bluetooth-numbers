@@ -7,7 +7,7 @@
 
 This project offers a Python package with a subset of [Bluetooth Assigned Numbers](https://www.bluetooth.com/specifications/assigned-numbers/), so Python projects can easily use these numbers. The goal of this project is to provide a shared resource so various Python projects that deal with Bluetooth don't have to replicate this effort.
 
-The source of the numbers in this package is Nordic Semiconductor's [Bluetooth Numbers Database](https://github.com/NordicSemiconductor/bluetooth-numbers-database), an up-to-date listing of all the various Bluetooth Specification-related elements that are defined by the Bluetooth industry (Company IDs, Service UUIDs, Characteristic UUIDs and Descriptor UUIDs), that you can use instead of rolling your own.
+The source of the numbers in this package is mostly Nordic Semiconductor's [Bluetooth Numbers Database](https://github.com/NordicSemiconductor/bluetooth-numbers-database), an up-to-date listing of all the various Bluetooth Specification-related elements that are defined by the Bluetooth industry (Company IDs, Service UUIDs, Characteristic UUIDs and Descriptor UUIDs), that you can use instead of rolling your own. It's supplemented with some data taken from the Bluetooth Assigned Numbers document that are not tracked by the Bluetooth Numbers Database.
 
 ## Installation
 
