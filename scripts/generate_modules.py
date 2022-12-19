@@ -5,7 +5,8 @@ from typing import Dict, Tuple
 
 from jinja2 import Environment, FileSystemLoader
 
-BLUETOOTH_NUMBERS_DIR = "bluetooth-numbers-database/v1"
+DATA_DIR = "data"
+BLUETOOTH_NUMBERS_DIR = f"{DATA_DIR}/bluetooth-numbers-database/v1"
 TEMPLATE_DIR = "templates"
 CODE_DIR = "src/bluetooth_numbers"
 UUID_TEMPLATE = "uuids.py.jinja"
