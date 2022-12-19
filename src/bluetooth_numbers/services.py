@@ -72,6 +72,18 @@ service = UUIDDict(
         0xFE59: "Secure DFU Service",
         0xFD6F: "Exposure Notification Service",
         0xFEBB: "File Transfer Service by Adafruit",
+        0xFFF3: "FiRa Consortium service",
+        0xFFF4: "FiRa Consortium service",
+        0xFFF5: "Car Connectivity Consortium, LLC service",
+        0xFFF6: "ZigBee Alliance service",
+        0xFFF7: "ZigBee Alliance service",
+        0xFFF8: "Mopria Alliance BLE Service service",
+        0xFFF9: "FIDO2 secure client-to-authenticator transport service",
+        0xFFFA: "ASTM Remote ID service",
+        0xFFFB: "Direct Thread Commissioning service",
+        0xFFFC: "Wireless Power Transfer (WPT) Service service",
+        0xFFFD: "Universal Second Factor Authenticator Service service",
+        0xFFFE: "Wireless Power Transfer Service service",
         UUID(
             "932C32BD-0000-47A2-835A-A8D455B859DD"
         ): "Phillips Hue Light Control Service",

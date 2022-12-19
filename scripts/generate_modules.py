@@ -16,6 +16,25 @@ file_loader = FileSystemLoader(TEMPLATE_DIR)
 env = Environment(loader=file_loader)
 
 
+def generate_uuid16_dictionary(kind: str) -> Dict[int, str]:
+    """Generate 16-bit UUID dictionary for a module.
+
+    The parameter :param:`kind` should be "sdo_service".
+
+    Returns a dict with uuid16 keys and their name.
+    """
+    uuid16_dict = {}
+
+    with (Path(DATA_DIR) / f"{kind}_uuids.json").open() as json_file:
+        json_data = json.loads(json_file.read())
+        for number in json_data:
+            name = number["name"]
+            uuid = number["uuid"]
+            uuid16_dict[uuid] = name
+
+    return uuid16_dict
+
+
 def generate_uuid_dictionaries(kind: str) -> Tuple[Dict[int, str], Dict[str, str]]:
     """Generate UUID dictionaries for a module.
 
@@ -79,6 +98,8 @@ def generate_cic_module(cic_dict: Dict[int, str]) -> None:
 
 # Generate modules for UUIDs
 service_uuid16, service_uuid128 = generate_uuid_dictionaries("service")
+sdo_service_uuid16 = generate_uuid16_dictionary("sdo_service")
+service_uuid16.update(sdo_service_uuid16)
 generate_uuid_module("service", service_uuid16, service_uuid128)
 characteristic_uuid16, characteristic_uuid128 = generate_uuid_dictionaries(
     "characteristic"

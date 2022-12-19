@@ -1,0 +1,14 @@
+[
+    { "name": "FiRa Consortium service", "uuid": "FFF3" },
+    { "name": "FiRa Consortium service", "uuid": "FFF4" },
+    { "name": "Car Connectivity Consortium, LLC service", "uuid": "FFF5" },
+    { "name": "ZigBee Alliance service", "uuid": "FFF6" },
+    { "name": "ZigBee Alliance service", "uuid": "FFF7" },
+    { "name": "Mopria Alliance BLE Service service", "uuid": "FFF8" },
+    { "name": "FIDO2 secure client-to-authenticator transport service", "uuid": "FFF9" },
+    { "name": "ASTM Remote ID service", "uuid": "FFFA" },
+    { "name": "Direct Thread Commissioning service", "uuid": "FFFB" },
+    { "name": "Wireless Power Transfer (WPT) Service service", "uuid": "FFFC" },
+    { "name": "Universal Second Factor Authenticator Service service", "uuid": "FFFD" },
+    { "name": "Wireless Power Transfer Service service", "uuid": "FFFE" }
+]
