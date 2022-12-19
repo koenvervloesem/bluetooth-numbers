@@ -3,7 +3,7 @@
 [![Continous Integration](https://github.com/koenvervloesem/bluetooth-numbers/workflows/Tests/badge.svg)](https://github.com/koenvervloesem/bluetooth-numbers/actions)
 [![PyPI package version](https://img.shields.io/pypi/v/bluetooth-numbers.svg)](https://pypi.org/project/bluetooth-numbers)
 [![Python versions](https://img.shields.io/pypi/pyversions/bluetooth-numbers.svg)](https://www.python.org)
-[![GitHub license](https://img.shields.io/github/license/koenvervloesem/bluetooth-numbers.svg)](https://github.com/koenvervloesem/bluetooth-numbers/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/koenvervloesem/bluetooth-numbers.svg)](https://github.com/koenvervloesem/bluetooth-numbers/blob/main/LICENSE.txt)
 
 This project offers a Python package with a subset of [Bluetooth Assigned Numbers](https://www.bluetooth.com/specifications/assigned-numbers/), so Python projects can easily use these numbers. The goal of this project is to provide a shared resource so various Python projects that deal with Bluetooth don't have to replicate this effort.
 
@@ -59,4 +59,4 @@ Get the description of a descriptor UUID:
 
 ## License
 
-This project is provided by Koen Vervloesem as open source software with the MIT license. See the [LICENSE](LICENSE.txr) file for more information.
+This project is provided by Koen Vervloesem as open source software with the MIT license. See the [LICENSE](https://github.com/koenvervloesem/bluetooth-numbers/blob/main/LICENSE.txt) file for more information.
