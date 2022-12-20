@@ -1,3 +1,4 @@
+"""Test the bluetooth_numbers.ouis module."""
 import pytest
 
 from bluetooth_numbers.ouis import oui
@@ -11,6 +12,7 @@ from bluetooth_numbers.ouis import oui
     ],
 )
 def test_oui(prefix: str, name: str) -> None:
+    """Test whether the oui dict returns the correct name for a few prefixes."""
     assert oui[prefix] == name
 
 
@@ -22,5 +24,8 @@ def test_oui(prefix: str, name: str) -> None:
     ],
 )
 def test_invalid_company(prefix: str) -> None:
+    """Test whether getting the value of an unknown prefix in the oui dict results in
+    a KeyError.
+    """
     with pytest.raises(KeyError):
         oui[prefix]

@@ -1,3 +1,10 @@
+"""bluetooth-numbers
+
+Python package with a wide set of numbers related to Bluetooth
+
+This project offers a Python package with a wide set of numbers related to Bluetooth,
+so Python projects can easily use these numbers.
+"""
 import sys
 
 if sys.version_info[:2] >= (3, 8):

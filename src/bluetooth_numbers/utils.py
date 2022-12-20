@@ -1,7 +1,11 @@
+"""Module with utility classes and functions used by the other modules of this
+package. They are also useful in programs using this library.
+"""
 from typing import Dict, Union
 from uuid import UUID
 
 BASE_UUID = UUID("00000000-0000-1000-8000-00805F9B34FB")
+"""Base UUID defined by the Bluetooth SIG."""
 
 
 def uuid128_to_uuid16(uuid128: UUID) -> int:

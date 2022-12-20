@@ -1,3 +1,4 @@
+"""Test the bluetooth_numbers.descriptors module."""
 import pytest
 
 from bluetooth_numbers.descriptors import descriptor
@@ -12,6 +13,7 @@ from bluetooth_numbers.descriptors import descriptor
     ],
 )
 def test_uuid16(uuid: int, name: str) -> None:
+    """Test whether the descriptor dict returns the correct name for a few UUIDs."""
     assert descriptor[uuid] == name
 
 
@@ -23,5 +25,8 @@ def test_uuid16(uuid: int, name: str) -> None:
     ],
 )
 def test_invalid_uuid16(uuid: int) -> None:
+    """Test whether getting the value of an invalid UUID from the descriptor dict
+    results in a KeyError.
+    """
     with pytest.raises(KeyError):
         descriptor[uuid]

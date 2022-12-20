@@ -1,3 +1,11 @@
+"""Module with OUIs for Bluetooth addresses.
+
+Usage:
+
+>>> from bluetooth_numbers.ouis import oui
+>>> oui["58:2D:34"]
+'Qingping Electronics (Suzhou) Co., Ltd'
+"""
 from typing import Dict
 
 oui: Dict[str, str] = {  # OUIs for Bluetooth addresses
