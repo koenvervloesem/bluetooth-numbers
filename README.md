@@ -60,3 +60,5 @@ Get the description of a descriptor UUID:
 ## License
 
 This project is provided by Koen Vervloesem as open source software with the MIT license. See the [LICENSE](https://github.com/koenvervloesem/bluetooth-numbers/blob/main/LICENSE.txt) file for more information.
+
+See also the [license for the Bluetooth Numbers Database](https://github.com/NordicSemiconductor/bluetooth-numbers-database/blob/master/LICENSE) used in this package.
