@@ -440,13 +440,11 @@ characteristic = UUIDDict(
         UUID("8EC90004-F315-4F60-9FB8-838830DAEA50"): "Buttonless DFU With Bonds",
         UUID("8E400001-F315-4F60-9FB8-838830DAEA50"): "Experimental Buttonless DFU",
         UUID("DA2E7828-FBCE-4E01-AE9E-261174997C48"): "SMP Characteristic",
-        UUID(
-            "932C32BD-0002-47A2-835A-A8D455B859DD"
-        ): "Phillips Hue Light On/Off Toggle",
+        UUID("932C32BD-0002-47A2-835A-A8D455B859DD"): "Philips Hue Light On/Off Toggle",
         UUID(
             "932C32BD-0003-47A2-835A-A8D455B859DD"
-        ): "Phillips Hue Light Brightness Level",
-        UUID("932C32BD-0005-47A2-835A-A8D455B859DD"): "Phillips Hue Light Color",
+        ): "Philips Hue Light Brightness Level",
+        UUID("932C32BD-0005-47A2-835A-A8D455B859DD"): "Philips Hue Light Color",
         UUID("EF680101-9B35-4933-9B10-52FFA9740042"): "Thingy Device Name",
         UUID("EF680102-9B35-4933-9B10-52FFA9740042"): "Thingy Advertising Parameters",
         UUID("EF680104-9B35-4933-9B10-52FFA9740042"): "Thingy Connection Parameters",

@@ -66,7 +66,7 @@ service = UUIDDict(
         0x1853: "Common Audio",
         0x1854: "Hearing Access",
         0x1855: "TMAS",
-        0xFE0F: "Signify Netherlands B.V. (formerly Phillips Lighting) Service",
+        0xFE0F: "Signify Netherlands B.V. (formerly Philips Lighting) Service",
         0xFEAA: "Eddystone",
         0xFE2C: "Fast Pair Service",
         0xFE59: "Secure DFU Service",
@@ -647,13 +647,10 @@ service = UUIDDict(
         0xFFFE: "Wireless Power Transfer Service service",
         UUID(
             "932C32BD-0000-47A2-835A-A8D455B859DD"
-        ): "Phillips Hue Light Control Service",
-        UUID(
-            "0000180A-0000-1000-8000-00805F9B34FB"
-        ): "Phillips Hue Light Information Service",
+        ): "Philips Hue Light Control Service",
         UUID(
             "B8843ADD-0000-4AA1-8794-C3F462030BDA"
-        ): "Phillips Hue Light Update Service",
+        ): "Philips Hue Light Update Service",
         UUID(
             "7905F431-B5CE-4E99-A40F-4B1E122D00D0"
         ): "Apple Notification Center Service",
