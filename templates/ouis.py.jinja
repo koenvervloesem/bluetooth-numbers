@@ -1,0 +1,8 @@
+# noqa: E501
+from typing import Dict
+
+oui: Dict[str, str] = {  # OUIs for Bluetooth addresses{% for prefix, name in ouis.items() %}
+    "{{ prefix }}": "{{ name }}",
+{%- endfor %}
+}
+

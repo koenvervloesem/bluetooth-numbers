@@ -5,16 +5,20 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/bluetooth-numbers.svg)](https://www.python.org)
 [![GitHub license](https://img.shields.io/github/license/koenvervloesem/bluetooth-numbers.svg)](https://github.com/koenvervloesem/bluetooth-numbers/blob/main/LICENSE.txt)
 
-This project offers a Python package with a subset of [Bluetooth Assigned Numbers](https://www.bluetooth.com/specifications/assigned-numbers/), so Python projects can easily use these numbers. The goal of this project is to provide a shared resource so various Python projects that deal with Bluetooth don't have to replicate this effort.
+This project offers a Python package with a wide set of numbers related to Bluetooth, so Python projects can easily use these numbers. The goal of this project is to provide a shared resource so various Python projects that deal with Bluetooth don't have to replicate this effort by rolling their own database and keeping it updated.
 
-The source of the numbers in this package is mostly Nordic Semiconductor's [Bluetooth Numbers Database](https://github.com/NordicSemiconductor/bluetooth-numbers-database), an up-to-date listing of all the various Bluetooth Specification-related elements that are defined by the Bluetooth industry (Company IDs, Service UUIDs, Characteristic UUIDs and Descriptor UUIDs), that you can use instead of rolling your own. It's supplemented with some data taken from the Bluetooth Assigned Numbers document that are not tracked by the Bluetooth Numbers Database.
+The following sources are used:
+
+* Nordic Semiconductor's [Bluetooth Numbers Database](https://github.com/NordicSemiconductor/bluetooth-numbers-database) for Company IDs, Service UUIDs, Characteristic UUIDs and Descriptor UUIDs
+* [Bluetooth Assigned Numbers](https://www.bluetooth.com/specifications/assigned-numbers/) for SDO Service UUIDs and Member Service UUIDs
+* The [IEEE database of OUIs](https://standards-oui.ieee.org/oui/oui.txt) for prefixes of Bluetooth addresses
 
 ## Installation
 
 The package can be installed from PyPI:
 
 ```shell
-pip3 install bluetooth-numbers
+pip install bluetooth-numbers
 ```
 
 ## Usage
@@ -55,6 +59,14 @@ Get the description of a descriptor UUID:
 >>> from bluetooth_numbers.descriptors import descriptor
 >>> descriptor[0x2901]
 'Characteristic User Descriptor'
+```
+
+Get the description of a OUI:
+
+```python
+>>> from bluetooth_numbers.ouis import oui
+>>> oui["58:2D:34"]
+'Qingping Electronics (Suzhou) Co., Ltd'
 ```
 
 ## License

@@ -1,6 +1,7 @@
 """Generate Python modules for Bluetooth numbers."""
 import json
 from pathlib import Path
+import re
 from typing import Dict, Tuple
 
 from jinja2 import Environment, FileSystemLoader
@@ -11,6 +12,8 @@ TEMPLATE_DIR = "templates"
 CODE_DIR = "src/bluetooth_numbers"
 UUID_TEMPLATE = "uuids.py.jinja"
 CIC_TEMPLATE = "companies.py.jinja"
+OUI_TEMPLATE = "ouis.py.jinja"
+OUI_RE = re.compile("^([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2})\s*\(hex\)\s+(.*)\s*$")
 
 file_loader = FileSystemLoader(TEMPLATE_DIR)
 env = Environment(loader=file_loader)
@@ -96,28 +99,55 @@ def generate_cic_module(cic_dict: Dict[int, str]) -> None:
         python_file.write(template.render(cics=cic_dict))
 
 
-# Generate modules for UUIDs
-service_uuid16, service_uuid128 = generate_uuid_dictionaries("service")
-member_service_uuid16 = generate_uuid16_dictionary("member_service")
-sdo_service_uuid16 = generate_uuid16_dictionary("sdo_service")
-# Don't let the UUIDs from the Assigned Numbers document overwrite the ones from the
-# Bluetooth Numbers Database because the latter has the names of the services, which give
-# more information than the names of the companies in the Assigned Numbers document.
-service_uuid16.update({key: value for key, value in member_service_uuid16.items() if not key in service_uuid16})
-service_uuid16.update(sdo_service_uuid16)
-generate_uuid_module("service", service_uuid16, service_uuid128)
-characteristic_uuid16, characteristic_uuid128 = generate_uuid_dictionaries(
-    "characteristic"
-)
-generate_uuid_module("characteristic", characteristic_uuid16, characteristic_uuid128)
-descriptor_uuid16, descriptor_uuid128 = generate_uuid_dictionaries("descriptor")
-generate_uuid_module("descriptor", descriptor_uuid16, descriptor_uuid128)
+def generate_oui_dictionary() -> Dict[str, str]:
+    """Generate OUI dictionary for a module.
 
-# Merge all 16-bit UUIDS and all 128-bit UUIDs
-# all_uuid16 = {**service_uuid16, **characteristic_uuid16, **descriptor_uuid16}
-# all_uuid128 = {**service_uuid128, **characteristic_uuid128, **descriptor_uuid128}
-# generate_uuid_module("uuids", all_uuid16, all_uuid128)
+    Returns a dict with OUI prefixes and their name.
+    """
+    oui_dict = {}
 
-# Generate module for Company ID Codes
-cics = generate_cic_dictionary()
-generate_cic_module(cics)
+    with (Path(DATA_DIR) / "oui.txt").open() as txt_file:
+        for line in txt_file:
+            extracted = OUI_RE.match(line)
+            if extracted:
+                oui_dict[extracted.group(1).replace("-", ":")] = extracted.group(2)
+
+    return oui_dict
+
+
+def generate_oui_module(oui_dict: Dict[str, str]) -> None:
+    """Generate Python module for OUIs."""
+    template = env.get_template(OUI_TEMPLATE)
+    with (Path(CODE_DIR) / "ouis.py").open("w") as python_file:
+        python_file.write(template.render(ouis=oui_dict))
+
+
+if __name__ == "__main__":
+    # Generate module for service UUIDs
+    service_uuid16, service_uuid128 = generate_uuid_dictionaries("service")
+    member_service_uuid16 = generate_uuid16_dictionary("member_service")
+    sdo_service_uuid16 = generate_uuid16_dictionary("sdo_service")
+    # Don't let the UUIDs from the Assigned Numbers document overwrite the ones from the
+    # Bluetooth Numbers Database because the latter has the names of the services, which give
+    # more information than the names of the companies in the Assigned Numbers document.
+    service_uuid16.update({key: value for key, value in member_service_uuid16.items() if not key in service_uuid16})
+    service_uuid16.update(sdo_service_uuid16)
+    generate_uuid_module("service", service_uuid16, service_uuid128)
+
+    # Generate module for characteristic UUIDs
+    characteristic_uuid16, characteristic_uuid128 = generate_uuid_dictionaries(
+        "characteristic"
+    )
+    generate_uuid_module("characteristic", characteristic_uuid16, characteristic_uuid128)
+
+    # Generate module for descriptor UUIDs
+    descriptor_uuid16, descriptor_uuid128 = generate_uuid_dictionaries("descriptor")
+    generate_uuid_module("descriptor", descriptor_uuid16, descriptor_uuid128)
+
+    # Generate module for Company ID Codes
+    cics = generate_cic_dictionary()
+    generate_cic_module(cics)
+
+    # Generate module for OUIs
+    ouis = generate_oui_dictionary()
+    generate_oui_module(ouis)
