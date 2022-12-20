@@ -1,7 +1,7 @@
 """Generate Python modules for Bluetooth numbers."""
 import json
-from pathlib import Path
 import re
+from pathlib import Path
 from typing import Dict, Tuple
 
 from jinja2 import Environment, FileSystemLoader
@@ -13,7 +13,7 @@ CODE_DIR = "src/bluetooth_numbers"
 UUID_TEMPLATE = "uuids.py.jinja"
 CIC_TEMPLATE = "companies.py.jinja"
 OUI_TEMPLATE = "ouis.py.jinja"
-OUI_RE = re.compile("^([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2})\s*\(hex\)\s+(.*)\s*$")
+OUI_RE = re.compile(r"^([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2})\s*\(hex\)\s+(.*)\s*$")
 
 file_loader = FileSystemLoader(TEMPLATE_DIR)
 env = Environment(loader=file_loader)
@@ -128,9 +128,16 @@ if __name__ == "__main__":
     member_service_uuid16 = generate_uuid16_dictionary("member_service")
     sdo_service_uuid16 = generate_uuid16_dictionary("sdo_service")
     # Don't let the UUIDs from the Assigned Numbers document overwrite the ones from the
-    # Bluetooth Numbers Database because the latter has the names of the services, which give
-    # more information than the names of the companies in the Assigned Numbers document.
-    service_uuid16.update({key: value for key, value in member_service_uuid16.items() if not key in service_uuid16})
+    # Bluetooth Numbers Database because the latter has the names of the services, which
+    # give more information than the names of the companies in the Assigned Numbers
+    # document.
+    service_uuid16.update(
+        {
+            key: value
+            for key, value in member_service_uuid16.items()
+            if key not in service_uuid16
+        }
+    )
     service_uuid16.update(sdo_service_uuid16)
     generate_uuid_module("service", service_uuid16, service_uuid128)
 
@@ -138,7 +145,9 @@ if __name__ == "__main__":
     characteristic_uuid16, characteristic_uuid128 = generate_uuid_dictionaries(
         "characteristic"
     )
-    generate_uuid_module("characteristic", characteristic_uuid16, characteristic_uuid128)
+    generate_uuid_module(
+        "characteristic", characteristic_uuid16, characteristic_uuid128
+    )
 
     # Generate module for descriptor UUIDs
     descriptor_uuid16, descriptor_uuid128 = generate_uuid_dictionaries("descriptor")

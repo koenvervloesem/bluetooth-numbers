@@ -1,4 +1,3 @@
-# noqa: E501
 from typing import Dict
 
 company: Dict[int, str] = {  # 16-bit company IDs

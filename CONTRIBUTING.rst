@@ -243,6 +243,8 @@ If you are part of the group of maintainers and have correct user permissions
 on PyPI_, the following steps can be used to release a new version for
 ``bluetooth-numbers``:
 
+#. Run ``git submodule update --remote`` to update the Bluetooth Numbers Database to the newest version.
+#. Run ``pre-commit run generate-modules --hook-stage manual`` to generate the project's modules from the newest data.
 #. Make sure all unit tests are successful.
 #. Tag the current commit on the main branch with a release tag, e.g., ``v1.2.3``.
 #. Push the new tag to the upstream repository_, e.g., ``git push upstream v1.2.3``

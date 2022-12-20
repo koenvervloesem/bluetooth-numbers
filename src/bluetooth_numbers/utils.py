@@ -60,7 +60,8 @@ def uuid16_to_uuid128(uuid16: int) -> UUID:
 
 
 def uint16_to_hex(number: int) -> str:
-    """Convert a 16-bit UUID or Company ID to a string representing the hexadecimal number.
+    """Convert a 16-bit UUID or Company ID to a string representing the hexadecimal
+    number.
 
     Args:
         number: A 16-bit number.
@@ -81,7 +82,8 @@ def uint16_to_hex(number: int) -> str:
 
 
 class UUIDDict(Dict[Union[UUID, int], str]):
-    """Dictionary class that converts 128-bit standard UUID keys to 16-bit when the key is missing.
+    """Dictionary class that converts 128-bit standard UUID keys to 16-bit when the key
+    is missing.
 
     This is used for 128-bit UUIDs.
     """

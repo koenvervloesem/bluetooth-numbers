@@ -44,7 +44,10 @@ def test_uuid128(uuid: UUID, name: str) -> None:
 @pytest.mark.parametrize(
     "uuid, name",
     [
-        (UUID("00002A7E-0000-1000-8000-00805F9B34FB"), "Aerobic Heart Rate Lower Limit"),
+        (
+            UUID("00002A7E-0000-1000-8000-00805F9B34FB"),
+            "Aerobic Heart Rate Lower Limit",
+        ),
         (UUID("00002a37-0000-1000-8000-00805f9B34fb"), "Heart Rate Measurement"),
         (UUID("00002ADE-0000-1000-8000-00805F9B34FB"), "Mesh Proxy Data Out"),
     ],

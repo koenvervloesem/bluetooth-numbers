@@ -32,7 +32,10 @@ def test_invalid_uuid16(uuid: int) -> None:
 @pytest.mark.parametrize(
     "uuid, name",
     [
-        (UUID("7905F431-B5CE-4E99-A40F-4B1E122D00D0"), "Apple Notification Center Service"),
+        (
+            UUID("7905F431-B5CE-4E99-A40F-4B1E122D00D0"),
+            "Apple Notification Center Service",
+        ),
         (UUID("6e400001-b5a3-f393-e0a9-e50e24dcca9e"), "Nordic UART Service"),
         (UUID("8D53DC1D-1DB7-4CD3-868B-8A527460AA84"), "SMP Service"),
     ],

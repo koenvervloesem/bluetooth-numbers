@@ -1,4 +1,3 @@
-# noqa: E501
 from typing import Dict
 
 oui: Dict[str, str] = {  # OUIs for Bluetooth addresses

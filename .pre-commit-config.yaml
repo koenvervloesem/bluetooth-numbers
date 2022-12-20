@@ -1,10 +1,20 @@
 exclude: '^docs/conf.py'
 
 repos:
+- repo: local
+  hooks:
+  - id: generate-modules
+    name: generate-modules
+    entry: python scripts/generate_modules.py
+    language: python
+    pass_filenames: false
+    additional_dependencies: [jinja2]
+    stages: [manual]
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.4.0
   hooks:
   - id: trailing-whitespace
+    exclude: ^data/
   - id: check-added-large-files
   - id: check-ast
   - id: check-json
@@ -13,6 +23,7 @@ repos:
   - id: check-yaml
   - id: debug-statements
   - id: end-of-file-fixer
+    exclude: ^data/
   - id: requirements-txt-fixer
   - id: mixed-line-ending
     args: ['--fix=auto']  # replace 'auto' with 'lf' to enforce Linux/Mac line endings or 'crlf' for Windows
@@ -50,5 +61,6 @@ repos:
   rev: 6.0.0
   hooks:
   - id: flake8
+    args: ['--ignore=E501']
   ## You can add flake8 plugins via `additional_dependencies`:
   #  additional_dependencies: [flake8-bugbear]
