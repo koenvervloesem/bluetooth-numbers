@@ -1,3 +1,12 @@
+"""Module with UUIDs and names for Bluetooth descriptors.
+
+Usage:
+
+>>> from bluetooth_numbers.descriptors import descriptor
+>>> descriptor[0x2901]
+'Characteristic User Descriptor'
+"""
+
 from .utils import UUIDDict
 
 descriptor = UUIDDict(

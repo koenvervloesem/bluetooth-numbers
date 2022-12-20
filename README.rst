@@ -1,6 +1,9 @@
 .. image:: https://github.com/koenvervloesem/bluetooth-numbers/workflows/tests/badge.svg
     :alt: Continuous Integration
     :target: https://github.com/koenvervloesem/bluetooth-numbers/actions
+.. image:: https://codecov.io/gh/koenvervloesem/bluetooth-numbers/branch/main/graph/badge.svg?token=6NR980W2VX
+    :alt: Code coverage
+    :target: https://codecov.io/gh/koenvervloesem/bluetooth-numbers
 .. image:: https://img.shields.io/pypi/v/bluetooth-numbers.svg
     :alt: Python package version
     :target: https://pypi.org/project/bluetooth-numbers/
@@ -10,9 +13,6 @@
 .. image:: https://readthedocs.org/projects/bluetooth-numbers/badge/?version=latest
     :target: https://bluetooth-numbers.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
-.. image:: https://codecov.io/gh/koenvervloesem/bluetooth-numbers/branch/main/graph/badge.svg?token=6NR980W2VX
-    :alt: Code coverage
-    :target: https://codecov.io/gh/koenvervloesem/bluetooth-numbers
 .. image:: https://img.shields.io/github/license/koenvervloesem/bluetooth-numbers.svg
     :alt: License
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/LICENSE.txt

@@ -1,3 +1,21 @@
+"""Module with UUIDs and names for Bluetooth {{ uuid_dict }}s.
+
+Usage:
+
+{% if uuid_dict == 'service' %}>>> from bluetooth_numbers.services import service
+>>> from uuid import UUID
+>>> service[0x180F]
+'Battery Service'
+>>> service[UUID("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")]
+'Nordic UART Service'{% elif uuid_dict == 'characteristic' %}>>> from bluetooth_numbers.characteristics import characteristic
+>>> from uuid import UUID
+>>> characteristic[0x2A37]
+'Heart Rate Measurement'
+>>> characteristic[UUID("6E400002-B5A3-F393-E0A9-E50E24DCCA9E")]
+'UART RX Characteristic'{% elif uuid_dict == 'descriptor' %}>>> from bluetooth_numbers.descriptors import descriptor
+>>> descriptor[0x2901]
+'Characteristic User Descriptor'{% endif %}
+"""
 {% if uuids128|length > 1 %}from uuid import UUID{% endif %}
 from .utils import UUIDDict
 {{ uuid_dict }} = UUIDDict({ {% for uuid, name in uuids16.items() %}

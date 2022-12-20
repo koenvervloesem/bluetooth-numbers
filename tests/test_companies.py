@@ -1,3 +1,4 @@
+"""Test the bluetooth_numbers.companies module."""
 import pytest
 
 from bluetooth_numbers.companies import company
@@ -16,6 +17,9 @@ from bluetooth_numbers.companies import company
     ],
 )
 def test_company(code: int, name: str) -> None:
+    """Test whether the company dict returns the correct name for a few company
+    codes.
+    """
     assert company[code] == name
 
 
@@ -27,5 +31,8 @@ def test_company(code: int, name: str) -> None:
     ],
 )
 def test_invalid_company(code: int) -> None:
+    """Test whether getting the value of an invalid code from the company dict results
+    in a KeyError.
+    """
     with pytest.raises(KeyError):
         company[code]

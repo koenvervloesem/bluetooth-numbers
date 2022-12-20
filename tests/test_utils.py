@@ -1,3 +1,4 @@
+"""Test the bluetooth_numbers.utils module."""
 from uuid import UUID
 
 import pytest
@@ -14,6 +15,9 @@ from bluetooth_numbers.utils import uint16_to_hex, uuid16_to_uuid128, uuid128_to
     ],
 )
 def test_uint16_to_hex(number: int, hex_string: str) -> None:
+    """Test whether the uint16_to_hex function converts a 16-bit unsigned integer
+    to the correct string representation.
+    """
     assert uint16_to_hex(number) == hex_string
 
 
@@ -26,6 +30,9 @@ def test_uint16_to_hex(number: int, hex_string: str) -> None:
     ],
 )
 def test_invalid_uint16_to_hex(number: int) -> None:
+    """Test whether the uint16_to_hex function raises a ValueError for an invalid
+    argument.
+    """
     with pytest.raises(ValueError):
         uint16_to_hex(number)
 
@@ -38,6 +45,9 @@ def test_invalid_uint16_to_hex(number: int) -> None:
     ],
 )
 def test_uuid16_to_uuid128(uuid16: int, uuid128: UUID) -> None:
+    """Test whether the uuid16_to_uuid128 function correctly converts a 16-bit UUID
+    to a 128-bit UUID with the Bluetooth base UUID.
+    """
     assert uuid16_to_uuid128(uuid16) == uuid128
 
 
@@ -50,6 +60,9 @@ def test_uuid16_to_uuid128(uuid16: int, uuid128: UUID) -> None:
     ],
 )
 def test_invalid_uuid16_to_uuid128(uuid16: int) -> None:
+    """Test whether the uuid16_to_uuid128 function raises a ValueError for an invalid
+    argument.
+    """
     with pytest.raises(ValueError):
         uuid16_to_uuid128(uuid16)
 
@@ -62,6 +75,9 @@ def test_invalid_uuid16_to_uuid128(uuid16: int) -> None:
     ],
 )
 def test_uuid128_to_uuid16(uuid128: UUID, uuid16: int) -> None:
+    """Test whether the uuid128_to_uuid16 function correctly converts a 128-bit
+    standard Bluetooth UUID to a 16-bit UUID.
+    """
     assert uuid128_to_uuid16(uuid128) == uuid16
 
 
@@ -73,5 +89,8 @@ def test_uuid128_to_uuid16(uuid128: UUID, uuid16: int) -> None:
     ],
 )
 def test_invalid_uuid128_to_uuid16(uuid128: UUID) -> None:
+    """Test whether the uuid128_to_uuid16 function raises a ValueError for an invalid
+    argument.
+    """
     with pytest.raises(ValueError):
         uuid128_to_uuid16(uuid128)

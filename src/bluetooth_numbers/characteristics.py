@@ -1,3 +1,14 @@
+"""Module with UUIDs and names for Bluetooth characteristics.
+
+Usage:
+
+>>> from bluetooth_numbers.characteristics import characteristic
+>>> from uuid import UUID
+>>> characteristic[0x2A37]
+'Heart Rate Measurement'
+>>> characteristic[UUID("6E400002-B5A3-F393-E0A9-E50E24DCCA9E")]
+'UART RX Characteristic'
+"""
 from uuid import UUID
 
 from .utils import UUIDDict

@@ -1,3 +1,11 @@
+"""Module with Bluetooth company IDs and their names.
+
+Usage:
+
+>>> from bluetooth_numbers.companies import company
+>>> company[0x0499]
+'Ruuvi Innovations Ltd.'
+"""
 from typing import Dict
 
 company: Dict[int, str] = {  # 16-bit company IDs{% for code, name in cics.items() %}
