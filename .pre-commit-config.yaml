@@ -71,3 +71,14 @@ repos:
   hooks:
   - id: interrogate
     args: [--verbose, --omit-covered-files, --fail-under=100]
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.991
+  hooks:
+  - id: mypy
+    entry: env MYPYPATH=src mypy
+    args: [--strict]
+    exclude: setup.py
+    additional_dependencies:
+    - jinja2
+    - pytest
