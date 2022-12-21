@@ -20,6 +20,8 @@ def uuid128_to_uuid16(uuid128: UUID) -> int:
     Returns:
         A 16-bit UUID that is the short UUID of the 128-bit standard Bluetooth UUID.
 
+    Example:
+    >>> from bluetooth_numbers.utils import uuid128_to_uuid16
     >>> uuid128_to_uuid16(UUID('00001800-0000-1000-8000-00805f9b34fb'))
     0x1800
     """
@@ -48,6 +50,8 @@ def uuid16_to_uuid128(uuid16: int) -> UUID:
     Returns:
         A 128-bit UUID that is the full UUID of the 16-bit UUID.
 
+    Example:
+    >>> from bluetooth_numbers.utils import uuid16_to_uuid128
     >>> uuid16_to_uuid128(0x1800)
     UUID('00001800-0000-1000-8000-00805f9b34fb')
     """
@@ -76,6 +80,8 @@ def uint16_to_hex(number: int) -> str:
     Returns:
         A string representing the hexadecimal number.
 
+    Example:
+    >>> from bluetooth_numbers.utils import uint16_to_hex
     >>> uint16_to_hex(0xFD6F)
     '0xfd6f'
     """
