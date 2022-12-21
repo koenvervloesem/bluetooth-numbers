@@ -75,7 +75,7 @@ def generate_uuid_module(
         )
 
 
-def generate_cic_dictionary() -> Dict[int, str]:
+def generate_cic_dictionary() -> Dict[str, str]:
     """Generate Company ID Code dictionary for a module.
 
     Returns a dict with CIC keys and their name.
@@ -92,7 +92,7 @@ def generate_cic_dictionary() -> Dict[int, str]:
     return cic_dict
 
 
-def generate_cic_module(cic_dict: Dict[int, str]) -> None:
+def generate_cic_module(cic_dict: Dict[str, str]) -> None:
     """Generate Python module for Company ID Codes."""
     template = env.get_template(CIC_TEMPLATE)
     with (Path(CODE_DIR) / "companies.py").open("w") as python_file:
