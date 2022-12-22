@@ -30,7 +30,7 @@ class CICDict(Dict[int, str]):
 
     Example:
 
-    >>> from bluetooth_numbers.companies import company
+    >>> from bluetooth_numbers import company
     >>> company[0x004C]
     'Apple, Inc.'
     >>> company[-1]
@@ -62,7 +62,7 @@ class OUIDict(Dict[str, str]):
 
     Example:
 
-    >>> from bluetooth_numbers.ouis import oui
+    >>> from bluetooth_numbers import oui
     >>> oui["98:E7:43"]
     'Dell Inc.'
     >>> oui["c4-29-96"]
@@ -100,7 +100,7 @@ class UUIDDict(Dict[Union[UUID, int], str]):
 
     Example:
 
-    >>> from bluetooth_numbers.services import service
+    >>> from bluetooth_numbers import service
     >>> from uuid import UUID
     >>> service[UUID("0000180F-0000-1000-8000-00805F9B34FB")]
     'Battery Service'

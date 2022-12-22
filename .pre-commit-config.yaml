@@ -16,7 +16,6 @@ repos:
   hooks:
   - id: trailing-whitespace
     exclude: ^data/
-  - id: check-added-large-files
   - id: check-ast
   - id: check-json
   - id: check-merge-conflict

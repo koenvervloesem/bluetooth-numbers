@@ -3,7 +3,7 @@
 
 Usage:
 
->>> from bluetooth_numbers.ouis import oui
+>>> from bluetooth_numbers import oui
 >>> oui["58:2D:34"]
 'Qingping Electronics (Suzhou) Co., Ltd'
 """

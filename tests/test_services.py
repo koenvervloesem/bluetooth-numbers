@@ -3,8 +3,8 @@ from uuid import UUID
 
 import pytest
 
+from bluetooth_numbers import service
 from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
-from bluetooth_numbers.services import service
 
 
 @pytest.mark.parametrize(

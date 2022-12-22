@@ -3,7 +3,7 @@
 
 Usage:
 
->>> from bluetooth_numbers.characteristics import characteristic
+>>> from bluetooth_numbers import characteristic
 >>> from uuid import UUID
 >>> characteristic[0x2A37]
 'Heart Rate Measurement'

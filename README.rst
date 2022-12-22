@@ -49,7 +49,7 @@ Get the description of a company ID:
 
 .. code-block:: python
 
-	>>> from bluetooth_numbers.companies import company
+	>>> from bluetooth_numbers import company
 	>>> company[0x0499]
 	'Ruuvi Innovations Ltd.'
 
@@ -57,7 +57,7 @@ Get the description of a service UUID:
 
 .. code-block:: python
 
-	>>> from bluetooth_numbers.services import service
+	>>> from bluetooth_numbers import service
 	>>> from uuid import UUID
 	>>> service[0x180F]
 	'Battery Service'
@@ -68,7 +68,7 @@ Get the description of a characteristic UUID:
 
 .. code-block:: python
 
-	>>> from bluetooth_numbers.characteristics import characteristic
+	>>> from bluetooth_numbers import characteristic
 	>>> from uuid import UUID
 	>>> characteristic[0x2A37]
 	'Heart Rate Measurement'
@@ -79,15 +79,15 @@ Get the description of a descriptor UUID:
 
 .. code-block:: python
 
-	>>> from bluetooth_numbers.descriptors import descriptor
+	>>> from bluetooth_numbers import descriptor
 	>>> descriptor[0x2901]
 	'Characteristic User Descriptor'
 
-Get the description of a OUI:
+Get the description of an OUI:
 
 .. code-block:: python
 
-	>>> from bluetooth_numbers.ouis import oui
+	>>> from bluetooth_numbers import oui
 	>>> oui["58:2D:34"]
 	'Qingping Electronics (Suzhou) Co., Ltd'
 

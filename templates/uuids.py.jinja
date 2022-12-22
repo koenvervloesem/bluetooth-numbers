@@ -2,17 +2,17 @@
 
 Usage:
 
-{% if uuid_dict == 'service' %}>>> from bluetooth_numbers.services import service
+{% if uuid_dict == 'service' %}>>> from bluetooth_numbers import service
 >>> from uuid import UUID
 >>> service[0x180F]
 'Battery Service'
 >>> service[UUID("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")]
-'Nordic UART Service'{% elif uuid_dict == 'characteristic' %}>>> from bluetooth_numbers.characteristics import characteristic
+'Nordic UART Service'{% elif uuid_dict == 'characteristic' %}>>> from bluetooth_numbers import characteristic
 >>> from uuid import UUID
 >>> characteristic[0x2A37]
 'Heart Rate Measurement'
 >>> characteristic[UUID("6E400002-B5A3-F393-E0A9-E50E24DCCA9E")]
-'UART RX Characteristic'{% elif uuid_dict == 'descriptor' %}>>> from bluetooth_numbers.descriptors import descriptor
+'UART RX Characteristic'{% elif uuid_dict == 'descriptor' %}>>> from bluetooth_numbers import descriptor
 >>> descriptor[0x2901]
 'Characteristic User Descriptor'{% endif %}
 """
