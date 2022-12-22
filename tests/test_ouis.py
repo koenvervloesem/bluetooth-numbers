@@ -1,8 +1,8 @@
 """Test the bluetooth_numbers.ouis module."""
 import pytest
 
+from bluetooth_numbers import oui
 from bluetooth_numbers.exceptions import UnknownOUIError, WrongOUIFormatError
-from bluetooth_numbers.ouis import oui
 
 
 @pytest.mark.parametrize(

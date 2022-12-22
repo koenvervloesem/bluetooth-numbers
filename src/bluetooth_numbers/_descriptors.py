@@ -3,7 +3,7 @@
 
 Usage:
 
->>> from bluetooth_numbers.descriptors import descriptor
+>>> from bluetooth_numbers import descriptor
 >>> descriptor[0x2901]
 'Characteristic User Descriptor'
 """

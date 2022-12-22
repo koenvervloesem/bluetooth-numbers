@@ -2,7 +2,7 @@
 """Test the bluetooth_numbers.companies module."""
 import pytest
 
-from bluetooth_numbers.companies import company
+from bluetooth_numbers import company
 from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownCICError
 
 

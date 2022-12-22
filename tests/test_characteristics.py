@@ -3,7 +3,7 @@ from uuid import UUID
 
 import pytest
 
-from bluetooth_numbers.characteristics import characteristic
+from bluetooth_numbers import characteristic
 from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
 
 

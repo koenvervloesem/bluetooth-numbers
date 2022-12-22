@@ -3,7 +3,7 @@
 
 Usage:
 
->>> from bluetooth_numbers.services import service
+>>> from bluetooth_numbers import service
 >>> from uuid import UUID
 >>> service[0x180F]
 'Battery Service'

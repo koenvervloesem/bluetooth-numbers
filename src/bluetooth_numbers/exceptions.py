@@ -18,7 +18,7 @@ class UnknownCICError(BluetoothNumbersError):
 
 
 class UnknownOUIError(BluetoothNumbersError):
-    """Exception raised when a OUI is not known."""
+    """Exception raised when an OUI is not known."""
 
 
 class UnknownUUIDError(BluetoothNumbersError):

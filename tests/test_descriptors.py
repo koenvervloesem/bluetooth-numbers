@@ -1,7 +1,7 @@
 """Test the bluetooth_numbers.descriptors module."""
 import pytest
 
-from bluetooth_numbers.descriptors import descriptor
+from bluetooth_numbers import descriptor
 from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
 
 
