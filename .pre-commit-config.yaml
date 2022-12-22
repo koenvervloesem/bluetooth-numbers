@@ -66,6 +66,14 @@ repos:
   ## You can add flake8 plugins via `additional_dependencies`:
   #  additional_dependencies: [flake8-bugbear]
 
+- repo: https://github.com/pycqa/pylint
+  rev: v2.15.9
+  hooks:
+  - id: pylint
+    additional_dependencies:
+    - jinja2
+    - pytest
+
 - repo: https://github.com/econchick/interrogate
   rev: 1.5.0
   hooks:

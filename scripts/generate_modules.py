@@ -70,6 +70,7 @@ def generate_uuid_module(
     """
     template = env.get_template(UUID_TEMPLATE)
     with (Path(CODE_DIR) / f"{kind}s.py").open("w") as python_file:
+        python_file.write("# pylint: skip-file\n")
         python_file.write(
             template.render(uuids16=uuid16_dict, uuids128=uuid128_dict, uuid_dict=kind)
         )
@@ -96,6 +97,7 @@ def generate_cic_module(cic_dict: Dict[str, str]) -> None:
     """Generate Python module for Company ID Codes."""
     template = env.get_template(CIC_TEMPLATE)
     with (Path(CODE_DIR) / "companies.py").open("w") as python_file:
+        python_file.write("# pylint: skip-file\n")
         python_file.write(template.render(cics=cic_dict))
 
 
@@ -119,6 +121,7 @@ def generate_oui_module(oui_dict: Dict[str, str]) -> None:
     """Generate Python module for OUIs."""
     template = env.get_template(OUI_TEMPLATE)
     with (Path(CODE_DIR) / "ouis.py").open("w") as python_file:
+        python_file.write("# pylint: skip-file\n")
         python_file.write(template.render(ouis=oui_dict))
 
 

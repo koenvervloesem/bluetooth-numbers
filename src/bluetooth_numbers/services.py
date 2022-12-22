@@ -1,3 +1,4 @@
+# pylint: skip-file
 """Module with UUIDs and names for Bluetooth services.
 
 Usage:
@@ -9,9 +10,10 @@ Usage:
 >>> service[UUID("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")]
 'Nordic UART Service'
 """
+# pylint: skip-file
 from uuid import UUID
 
-from .utils import UUIDDict
+from bluetooth_numbers.dicts import UUIDDict
 
 service = UUIDDict(
     {
