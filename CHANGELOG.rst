@@ -2,6 +2,39 @@
 Changelog
 =========
 
+Version 1.0.0 (2022-12-22)
+==========================
+
+This is a major release with some breaking changes.
+
+Whereas in previous versions you did:
+
+.. code-block:: python
+
+    from bluetooth_numbers.companies import company
+
+This is now:
+
+.. code-block:: python
+
+    from bluetooth_numbers import company
+
+The OUIs and CICs now also use their own dict-like class, just like the services, characteristics and descriptions already did.
+
+All searches for numbers now raise package-specific exceptions when something's wrong, for instance for invalid or unknown values.
+
+Look at the `API documentation <https://bluetooth-numbers.readthedocs.io/en/latest/api/modules.html>`_ for all these changes.
+
+What's Changed
+--------------
+
+* Documentation improvements with docstrings by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/1
+* Run doctests in CI to make sure examples in the documentation work by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/2
+* Add package data for minimum Python version and keywords by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/3
+* Run mypy in pre-commit hook by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/4
+* Add custom exceptions for this package by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/5
+* Change public API for easier importing by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/6
+
 Version 0.2.1 (2022-12-20)
 ==========================
 
