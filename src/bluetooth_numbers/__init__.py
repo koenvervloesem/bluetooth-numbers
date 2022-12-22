@@ -1,3 +1,4 @@
+# pylint: skip-file
 """bluetooth-numbers
 
 Python package with a wide set of numbers related to Bluetooth

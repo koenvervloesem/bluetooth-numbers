@@ -1,7 +1,9 @@
+# pylint: disable=line-too-long
 """Test the bluetooth_numbers.companies module."""
 import pytest
 
 from bluetooth_numbers.companies import company
+from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownCICError
 
 
 @pytest.mark.parametrize(
@@ -27,12 +29,29 @@ def test_company(code: int, name: str) -> None:
     "code",
     [
         (-1),
-        (65534),
+        (65536),
+        (6.5),
+        ("test"),
     ],
 )
 def test_invalid_company(code: int) -> None:
-    """Test whether getting the value of an invalid code from the company dict results
-    in a KeyError.
+    """Test whether getting the value of an invalid code from the company
+    dict raises the No16BitIntegerError exception.
     """
-    with pytest.raises(KeyError):
-        company[code]
+    with pytest.raises(No16BitIntegerError):
+        _ = company[code]
+
+
+@pytest.mark.parametrize(
+    "code",
+    [
+        (0xEEEE),
+        (65534),
+    ],
+)
+def test_unknown_company(code: int) -> None:
+    """Test whether getting the value of an unknown code from the company
+    dict raises the UnknownCICError exception.
+    """
+    with pytest.raises(UnknownCICError):
+        _ = company[code]

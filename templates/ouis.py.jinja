@@ -6,9 +6,9 @@ Usage:
 >>> oui["58:2D:34"]
 'Qingping Electronics (Suzhou) Co., Ltd'
 """
-from typing import Dict
+from bluetooth_numbers.dicts import OUIDict
 
-oui: Dict[str, str] = {  # OUIs for Bluetooth addresses{% for prefix, name in ouis.items() %}
+oui = OUIDict({  # OUIs for Bluetooth addresses{% for prefix, name in ouis.items() %}
     "{{ prefix }}": "{{ name }}",
 {%- endfor %}
-}
+})

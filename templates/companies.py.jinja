@@ -6,9 +6,9 @@ Usage:
 >>> company[0x0499]
 'Ruuvi Innovations Ltd.'
 """
-from typing import Dict
+from bluetooth_numbers.dicts import CICDict
 
-company: Dict[int, str] = {  # 16-bit company IDs{% for code, name in cics.items() %}
+company = CICDict({  # 16-bit company IDs{% for code, name in cics.items() %}
     {{ code }}: "{{ name }}",
 {%- endfor %}
-}
+})

@@ -4,6 +4,7 @@ from uuid import UUID
 import pytest
 
 from bluetooth_numbers.characteristics import characteristic
+from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
 
 
 @pytest.mark.parametrize(
@@ -25,15 +26,32 @@ def test_uuid16(uuid: int, name: str) -> None:
     "uuid",
     [
         (-1),
-        (65535),
+        (65536),
+        (6.5),
     ],
 )
 def test_invalid_uuid16(uuid: int) -> None:
     """Test whether getting the value of an invalid 16-bit UUID from the
-    characteristic dict results in a KeyError.
+    characteristic dict raises the No16BitIntegerError exception.
     """
-    with pytest.raises(KeyError):
-        characteristic[uuid]
+    with pytest.raises(No16BitIntegerError):
+        _ = characteristic[uuid]
+
+
+@pytest.mark.parametrize(
+    "uuid",
+    [
+        (0x0000),
+        (0x2ACA),
+        (0xFFFF),
+    ],
+)
+def test_unknown_uuid16(uuid: int) -> None:
+    """Test whether getting the value of an unknown 16-bit UUID from the
+    characteristic dict raises the UnknownUUIDError exception.
+    """
+    with pytest.raises(UnknownUUIDError):
+        _ = characteristic[uuid]
 
 
 @pytest.mark.parametrize(
@@ -76,9 +94,9 @@ def test_uuid16_as_uuid128(uuid: UUID, name: str) -> None:
         (UUID("9652BA73-AA7C-4B56-BB93-CCC6D44937C8")),
     ],
 )
-def test_invalid_uuid128(uuid: UUID) -> None:
+def test_unknown_uuid128(uuid: UUID) -> None:
     """Test whether getting the value of an unknown 128-bit UUID from the
-    characteristic dict results in a KeyError.
+    characteristic dict results in an UnknownUUIDError.
     """
-    with pytest.raises(KeyError):
-        characteristic[uuid]
+    with pytest.raises(UnknownUUIDError):
+        _ = characteristic[uuid]

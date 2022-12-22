@@ -1,3 +1,4 @@
+# pylint: skip-file
 """Module with UUIDs and names for Bluetooth characteristics.
 
 Usage:
@@ -9,9 +10,10 @@ Usage:
 >>> characteristic[UUID("6E400002-B5A3-F393-E0A9-E50E24DCCA9E")]
 'UART RX Characteristic'
 """
+# pylint: skip-file
 from uuid import UUID
 
-from .utils import UUIDDict
+from bluetooth_numbers.dicts import UUIDDict
 
 characteristic = UUIDDict(
     {
