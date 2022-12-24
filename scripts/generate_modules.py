@@ -22,7 +22,7 @@ env = Environment(loader=file_loader)
 def generate_uuid16_dictionary(kind: str) -> Dict[int, str]:
     """Generate 16-bit UUID dictionary for a module.
 
-    The parameter :param:`kind` should be "sdo_service".
+    The parameter `kind` should be "sdo_service".
 
     Returns a dict with uuid16 keys and their name.
     """
@@ -41,7 +41,7 @@ def generate_uuid16_dictionary(kind: str) -> Dict[int, str]:
 def generate_uuid_dictionaries(kind: str) -> Tuple[Dict[int, str], Dict[str, str]]:
     """Generate UUID dictionaries for a module.
 
-    The parameter :param:`kind` should be "service", "characteristic", or "descriptor".
+    The parameter `kind` should be "service", "characteristic", or "descriptor".
 
     Returns a tuple of dicts with uuid16 and uuid128 keys and their name.
     """
@@ -66,7 +66,7 @@ def generate_uuid_module(
 ) -> None:
     """Generate Python module for UUIDs.
 
-    The parameter :param:`kind` should be "service", "characteristic", or "descriptor".
+    The parameter `kind` should be "service", "characteristic", or "descriptor".
     """
     template = env.get_template(UUID_TEMPLATE)
     with (Path(CODE_DIR) / f"_{kind}s.py").open("w") as python_file:

@@ -30,8 +30,10 @@ from bluetooth_numbers.utils import (
     ],
 )
 def test_is_normalized_oui(oui: str, result: bool) -> None:
-    """Test whether the is_normalized_oui function correctly checks whether a string
-    is a normalized OUI.
+    """Test whether the is_normalized_oui function works correctly.
+
+    It should return True for a normalized OUI and False otherwise. It should also
+    return False if the argument isn't even an unnormalized OUI.
     """
     assert is_normalized_oui(oui) == result
 
@@ -48,7 +50,7 @@ def test_is_normalized_oui(oui: str, result: bool) -> None:
     ],
 )
 def test_normalize_oui(oui: str, normalized: str) -> None:
-    """Test whether the normalize_oui function correctly normalizes an OUI."""
+    """Test whether the normalize_oui function normalizes OUIs."""
     assert normalize_oui(oui) == normalized
 
 
@@ -61,8 +63,11 @@ def test_normalize_oui(oui: str, normalized: str) -> None:
     ],
 )
 def test_normalize_oui_exceptions(oui: str) -> None:
-    """Test whether the normalize_oui function raises a WrongOUIFormatError exception
-    when the argument doesn't have the right format."""
+    """Test the normalize_oui function with invalid arguments.
+
+    It should raise a WrongOUIFormatError exception when the argument doesn't have
+    the right format.
+    """
     with pytest.raises(WrongOUIFormatError):
         normalize_oui(oui)
 
@@ -81,8 +86,9 @@ def test_normalize_oui_exceptions(oui: str) -> None:
     ],
 )
 def test_is_uint16(number: int, result: bool) -> None:
-    """Test whether the is_uint16 function correctly checks whether a number is a
-    16-bit unsigned integer.
+    """Test whether the is_uint16 function works correctly.
+
+    It should return True when a number is a 16-bit unsigned integer; False otherwise.
     """
     assert is_uint16(number) == result
 
@@ -96,8 +102,9 @@ def test_is_uint16(number: int, result: bool) -> None:
     ],
 )
 def test_uint16_to_hex(number: int, hex_string: str) -> None:
-    """Test whether the uint16_to_hex function converts a 16-bit unsigned integer
-    to the correct string representation.
+    """Test the uint16_to_hex function with 16-bit unsigned integers.
+
+    It should convert a 16-bit unsigned integer to its string representation.
     """
     assert uint16_to_hex(number) == hex_string
 
@@ -111,8 +118,9 @@ def test_uint16_to_hex(number: int, hex_string: str) -> None:
     ],
 )
 def test_invalid_uint16_to_hex(number: int) -> None:
-    """Test whether the uint16_to_hex function raises a No16BitIntegerError for an
-    invalid argument.
+    """Test the uint16_to_hex function with invalid arguments.
+
+    It should raise a No16BitIntegerError for an invalid argument.
     """
     with pytest.raises(No16BitIntegerError):
         uint16_to_hex(number)
@@ -126,8 +134,9 @@ def test_invalid_uint16_to_hex(number: int) -> None:
     ],
 )
 def test_uuid16_to_uuid128(uuid16: int, uuid128: UUID) -> None:
-    """Test whether the uuid16_to_uuid128 function correctly converts a 16-bit UUID
-    to a 128-bit UUID with the Bluetooth base UUID.
+    """Test the uuid16_to_uuid128 function with 16-bit UUIDs.
+
+    It should convert a 16-bit UUID to a 128-bit UUID with the Bluetooth base UUID.
     """
     assert uuid16_to_uuid128(uuid16) == uuid128
 
@@ -141,8 +150,9 @@ def test_uuid16_to_uuid128(uuid16: int, uuid128: UUID) -> None:
     ],
 )
 def test_invalid_uuid16_to_uuid128(uuid16: int) -> None:
-    """Test whether the uuid16_to_uuid128 function raises a No16BitIntegerError for an
-    invalid argument.
+    """Test the uuid16_to_uuid128 function with invalid arguments.
+
+    It should raise a No16BitIntegerError for an invalid argument.
     """
     with pytest.raises(No16BitIntegerError):
         uuid16_to_uuid128(uuid16)
@@ -156,8 +166,9 @@ def test_invalid_uuid16_to_uuid128(uuid16: int) -> None:
     ],
 )
 def test_uuid128_to_uuid16(uuid128: UUID, uuid16: int) -> None:
-    """Test whether the uuid128_to_uuid16 function correctly converts a 128-bit
-    standard Bluetooth UUID to a 16-bit UUID.
+    """Test the uuid128_to_uuid16 function with 128-bit standard UUIDs.
+
+    It should convert a 128-bit standard Bluetooth UUID to a 16-bit UUID.
     """
     assert uuid128_to_uuid16(uuid128) == uuid16
 
@@ -170,8 +181,9 @@ def test_uuid128_to_uuid16(uuid128: UUID, uuid16: int) -> None:
     ],
 )
 def test_invalid_uuid128_to_uuid16(uuid128: UUID) -> None:
-    """Test whether the uuid128_to_uuid16 function raises a NonStandardUUIDError
-    for an invalid argument.
+    """Test the uuid128_to_uuid16 function with invalid arguments.
+
+    It should raise a NonStandardUUIDError for an invalid argument.
     """
     with pytest.raises(NonStandardUUIDError):
         uuid128_to_uuid16(uuid128)

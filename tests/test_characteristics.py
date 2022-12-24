@@ -1,4 +1,4 @@
-"""Test the bluetooth_numbers.characteristics module."""
+"""Test the bluetooth_numbers._characteristics module."""
 from uuid import UUID
 
 import pytest
@@ -16,9 +16,7 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
     ],
 )
 def test_uuid16(uuid: int, name: str) -> None:
-    """Test whether the characteristic dict returns the correct name for a few 16-bit
-    UUIDs.
-    """
+    """Test the characteristic dict with known values."""
     assert characteristic[uuid] == name
 
 
@@ -31,8 +29,10 @@ def test_uuid16(uuid: int, name: str) -> None:
     ],
 )
 def test_invalid_uuid16(uuid: int) -> None:
-    """Test whether getting the value of an invalid 16-bit UUID from the
-    characteristic dict raises the No16BitIntegerError exception.
+    """Test the characteristic dict with invalid keys.
+
+    Using a key that's not a 16-bit unsigned integer should raise a
+    No16BitIntegerError exception.
     """
     with pytest.raises(No16BitIntegerError):
         _ = characteristic[uuid]
@@ -47,8 +47,10 @@ def test_invalid_uuid16(uuid: int) -> None:
     ],
 )
 def test_unknown_uuid16(uuid: int) -> None:
-    """Test whether getting the value of an unknown 16-bit UUID from the
-    characteristic dict raises the UnknownUUIDError exception.
+    """Test the characteristic dict with unknown 16-bit UUIDs.
+
+    Using an unknown 16-bit UUID as a key should raise an UnknownUUIDError
+    exception.
     """
     with pytest.raises(UnknownUUIDError):
         _ = characteristic[uuid]
@@ -63,9 +65,7 @@ def test_unknown_uuid16(uuid: int) -> None:
     ],
 )
 def test_uuid128(uuid: UUID, name: str) -> None:
-    """Test whether the characteristic dict returns the correct name for a few 128-bit
-    non-standard UUIDs.
-    """
+    """Test the characteristic dict with 128-bit non-standard UUIDs."""
     assert characteristic[uuid] == name
 
 
@@ -81,9 +81,7 @@ def test_uuid128(uuid: UUID, name: str) -> None:
     ],
 )
 def test_uuid16_as_uuid128(uuid: UUID, name: str) -> None:
-    """Test whether the characteristic dict returns the correct name for a few 128-bit
-    standard UUIDs.
-    """
+    """Test the characteristic dict with 128-bit standard UUIDs."""
     assert characteristic[uuid] == name
 
 
@@ -95,8 +93,10 @@ def test_uuid16_as_uuid128(uuid: UUID, name: str) -> None:
     ],
 )
 def test_unknown_uuid128(uuid: UUID) -> None:
-    """Test whether getting the value of an unknown 128-bit UUID from the
-    characteristic dict results in an UnknownUUIDError.
+    """Test the characteristic dict with unknown 128-bit UUIDs.
+
+    Using an unknown 128-bit UUID as a key should raise an UnknownUUIDError
+    exception.
     """
     with pytest.raises(UnknownUUIDError):
         _ = characteristic[uuid]
