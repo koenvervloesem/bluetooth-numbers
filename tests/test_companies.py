@@ -1,5 +1,5 @@
 # pylint: disable=line-too-long
-"""Test the bluetooth_numbers.companies module."""
+"""Test the bluetooth_numbers._companies module."""
 import pytest
 
 from bluetooth_numbers import company
@@ -19,9 +19,7 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownCICError
     ],
 )
 def test_company(code: int, name: str) -> None:
-    """Test whether the company dict returns the correct name for a few company
-    codes.
-    """
+    """Test the company dict with known values."""
     assert company[code] == name
 
 
@@ -35,8 +33,10 @@ def test_company(code: int, name: str) -> None:
     ],
 )
 def test_invalid_company(code: int) -> None:
-    """Test whether getting the value of an invalid code from the company
-    dict raises the No16BitIntegerError exception.
+    """Test the company dict with invalid keys.
+
+    Using a key that's not a 16-bit unsigned integer should raise a
+    No16BitIntegerError exception.
     """
     with pytest.raises(No16BitIntegerError):
         _ = company[code]
@@ -50,8 +50,9 @@ def test_invalid_company(code: int) -> None:
     ],
 )
 def test_unknown_company(code: int) -> None:
-    """Test whether getting the value of an unknown code from the company
-    dict raises the UnknownCICError exception.
+    """Test the company dict with unknown keys.
+
+    Using an unknown company code as a key should raise an UnknownCICError exception.
     """
     with pytest.raises(UnknownCICError):
         _ = company[code]

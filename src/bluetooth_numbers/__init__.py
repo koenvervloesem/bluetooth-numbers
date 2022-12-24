@@ -1,10 +1,8 @@
 # pylint: skip-file
-"""bluetooth-numbers
+"""bluetooth-numbers: Python package with a wide set of numbers related to Bluetooth.
 
-Python package with a wide set of numbers related to Bluetooth
-
-This project offers a Python package with a wide set of numbers related to Bluetooth,
-so Python projects can easily use these numbers.
+This project offers a Python package with company IDs, service, characteristic and
+descriptor UUIDs and OUIs, so Python projects can easily use these numbers.
 
 Get the description of a company ID:
 

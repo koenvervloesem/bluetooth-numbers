@@ -1,4 +1,4 @@
-"""Test the bluetooth_numbers.ouis module."""
+"""Test the bluetooth_numbers._ouis module."""
 import pytest
 
 from bluetooth_numbers import oui
@@ -18,7 +18,7 @@ from bluetooth_numbers.exceptions import UnknownOUIError, WrongOUIFormatError
     ],
 )
 def test_oui(prefix: str, name: str) -> None:
-    """Test whether the oui dict returns the correct name for a few prefixes."""
+    """Test the oui dict with known values."""
     assert oui[prefix] == name
 
 
@@ -30,8 +30,9 @@ def test_oui(prefix: str, name: str) -> None:
     ],
 )
 def test_invalid_oui(prefix: str) -> None:
-    """Test whether getting the value of an invalid prefix in the oui dict
-    raises the WrongOUIFormatError exception.
+    """Test the oui dict with invalid prefixes.
+
+    Using an invalid prefix as a key should raise a WrongOUIFormatError exception.
     """
     with pytest.raises(WrongOUIFormatError):
         _ = oui[prefix]
@@ -45,8 +46,9 @@ def test_invalid_oui(prefix: str) -> None:
     ],
 )
 def test_unknown_oui(prefix: str) -> None:
-    """Test whether getting the value of an unknown prefix in the oui dict
-    raises the UnknownOUIError exception.
+    """Test the oui dict with unknown prefixes.
+
+    Using an unknown prefix as a key should raise an UnknownOUIError exception.
     """
     with pytest.raises(UnknownOUIError):
         _ = oui[prefix]

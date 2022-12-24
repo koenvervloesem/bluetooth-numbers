@@ -1,4 +1,4 @@
-"""Test the bluetooth_numbers.descriptors module."""
+"""Test the bluetooth_numbers._descriptors module."""
 import pytest
 
 from bluetooth_numbers import descriptor
@@ -14,7 +14,7 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
     ],
 )
 def test_uuid16(uuid: int, name: str) -> None:
-    """Test whether the descriptor dict returns the correct name for a few UUIDs."""
+    """Test the descriptor dict with known values."""
     assert descriptor[uuid] == name
 
 
@@ -27,8 +27,10 @@ def test_uuid16(uuid: int, name: str) -> None:
     ],
 )
 def test_invalid_uuid16(uuid: int) -> None:
-    """Test whether getting the value of an invalid UUID from the descriptor dict
-    raises the No16BitIntegerError exception.
+    """Test the descriptor dict with invalid keys.
+
+    Using a key that's not a 16-bit unsigned integer should raise a
+    No16BitIntegerError exception.
     """
     with pytest.raises(No16BitIntegerError):
         _ = descriptor[uuid]
@@ -43,8 +45,10 @@ def test_invalid_uuid16(uuid: int) -> None:
     ],
 )
 def test_unknown_uuid16(uuid: int) -> None:
-    """Test whether getting the value of an unknown UUID from the descriptor dict
-    raises the UnknownUUIDError exception.
+    """Test the descriptor dict with unknown 16-bit UUIDs.
+
+    Using an unknown 16-bit UUID as a key should raise an UnknownUUIDError
+    exception.
     """
     with pytest.raises(UnknownUUIDError):
         _ = descriptor[uuid]
