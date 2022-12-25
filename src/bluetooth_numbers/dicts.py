@@ -118,10 +118,11 @@ class UUIDDict(Dict[Union[UUID, int], str]):  # noqa
         if isinstance(key, UUID):
             try:
                 uuid16_key = uuid128_to_uuid16(key)
-                return self[uuid16_key]
             except NonStandardUUIDError as error:
                 raise UnknownUUIDError(key) from error
+            else:
+                return self[uuid16_key]
         elif is_uint16(key):
             raise UnknownUUIDError(key)
-        else:
-            raise No16BitIntegerError(key)
+
+        raise No16BitIntegerError(key)

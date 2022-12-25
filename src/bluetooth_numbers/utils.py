@@ -70,25 +70,6 @@ def normalize_oui(oui: str) -> str:
     raise WrongOUIFormatError(oui)
 
 
-def is_uint16(number: int) -> bool:
-    """Check whether a number is a 16-bit unsigned integer.
-
-    Args:
-        number (int): The number to check.
-
-    Returns:
-        bool: ``True`` if `number` is a 16-bit unsigned integer, ``False`` otherwise.
-
-    Examples:
-        >>> from bluetooth_numbers.utils import is_uint16
-        >>> is_uint16(0x1800)
-        True
-        >>> is_uint16(-1)
-        False
-    """
-    return isinstance(number, int) and 0 <= number <= 0xFFFF
-
-
 def uuid128_to_uuid16(uuid128: UUID) -> int:
     """Convert a 128-bit standard Bluetooth UUID to a 16-bit UUID.
 
@@ -114,8 +95,7 @@ def uuid128_to_uuid16(uuid128: UUID) -> int:
         raise NonStandardUUIDError(uuid128_masked)
 
     # If it is, extract the 16-bit UUID
-    uuid16 = int.from_bytes(uuid128.bytes[2:4], "big")
-    return uuid16
+    return int.from_bytes(uuid128.bytes[2:4], "big")
 
 
 def uuid16_to_uuid128(uuid16: int) -> UUID:
@@ -169,3 +149,22 @@ def uint16_to_hex(number: int) -> str:
         raise No16BitIntegerError(number)
 
     return f"{number:#0{6}x}"
+
+
+def is_uint16(number: int) -> bool:
+    """Check whether a number is a 16-bit unsigned integer.
+
+    Args:
+        number (int): The number to check.
+
+    Returns:
+        bool: ``True`` if `number` is a 16-bit unsigned integer, ``False`` otherwise.
+
+    Examples:
+        >>> from bluetooth_numbers.utils import is_uint16
+        >>> is_uint16(0x1800)
+        True
+        >>> is_uint16(-1)
+        False
+    """
+    return isinstance(number, int) and 0 <= number <= 0xFFFF
