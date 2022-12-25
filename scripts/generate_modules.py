@@ -1,8 +1,9 @@
 """Generate Python modules for Bluetooth numbers."""
+from __future__ import annotations
+
 import json
 import re
 from pathlib import Path
-from typing import Dict, Tuple
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -19,7 +20,7 @@ file_loader = FileSystemLoader(TEMPLATE_DIR)
 env = Environment(loader=file_loader)
 
 
-def generate_uuid16_dictionary(kind: str) -> Dict[int, str]:
+def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
     """Generate 16-bit UUID dictionary for a module.
 
     The parameter `kind` should be "sdo_service".
@@ -38,7 +39,7 @@ def generate_uuid16_dictionary(kind: str) -> Dict[int, str]:
     return uuid16_dict
 
 
-def generate_uuid_dictionaries(kind: str) -> Tuple[Dict[int, str], Dict[str, str]]:
+def generate_uuid_dictionaries(kind: str) -> tuple[dict[int, str], dict[str, str]]:
     """Generate UUID dictionaries for a module.
 
     The parameter `kind` should be "service", "characteristic", or "descriptor".
@@ -62,7 +63,7 @@ def generate_uuid_dictionaries(kind: str) -> Tuple[Dict[int, str], Dict[str, str
 
 
 def generate_uuid_module(
-    kind: str, uuid16_dict: Dict[int, str], uuid128_dict: Dict[str, str]
+    kind: str, uuid16_dict: dict[int, str], uuid128_dict: dict[str, str]
 ) -> None:
     """Generate Python module for UUIDs.
 
@@ -76,7 +77,7 @@ def generate_uuid_module(
         )
 
 
-def generate_cic_dictionary() -> Dict[str, str]:
+def generate_cic_dictionary() -> dict[str, str]:
     """Generate Company ID Code dictionary for a module.
 
     Returns a dict with CIC keys and their name.
@@ -93,7 +94,7 @@ def generate_cic_dictionary() -> Dict[str, str]:
     return cic_dict
 
 
-def generate_cic_module(cic_dict: Dict[str, str]) -> None:
+def generate_cic_module(cic_dict: dict[str, str]) -> None:
     """Generate Python module for Company ID Codes."""
     template = env.get_template(CIC_TEMPLATE)
     with (Path(CODE_DIR) / "_companies.py").open("w") as python_file:
@@ -101,7 +102,7 @@ def generate_cic_module(cic_dict: Dict[str, str]) -> None:
         python_file.write(template.render(cics=cic_dict))
 
 
-def generate_oui_dictionary() -> Dict[str, str]:
+def generate_oui_dictionary() -> dict[str, str]:
     """Generate OUI dictionary for a module.
 
     Returns a dict with OUI prefixes and their name.
@@ -117,7 +118,7 @@ def generate_oui_dictionary() -> Dict[str, str]:
     return oui_dict
 
 
-def generate_oui_module(oui_dict: Dict[str, str]) -> None:
+def generate_oui_module(oui_dict: dict[str, str]) -> None:
     """Generate Python module for OUIs."""
     template = env.get_template(OUI_TEMPLATE)
     with (Path(CODE_DIR) / "_ouis.py").open("w") as python_file:
