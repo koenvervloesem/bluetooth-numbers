@@ -58,9 +58,13 @@ jobs:
   test:
     needs: prepare
     strategy:
+      fail-fast: false
       matrix:
         python:
-        - "3.7"  # oldest Python supported by PSF
+        - 3.7     # oldest Python supported by PSF
+        - 3.8
+        - 3.9
+        - "3.10"
         - "3.11"  # newest Python that is stable
         platform:
         - ubuntu-latest
@@ -77,11 +81,11 @@ jobs:
         with: {name: python-distribution-files, path: dist/}
       - name: Run tests
         run: >-
-          pipx run --spec tox==3.27.1 tox
+          pipx run --python python${{ matrix.python }} --spec tox==3.27.1 tox
           --installpkg '${{ needs.prepare.outputs.wheel-distribution }}'
           -- -rFEx --durations 10 --color yes
       - name: Generate coverage report
-        run: pipx run coverage lcov -o coverage.lcov
+        run: pipx run --python python${{ matrix.python }} coverage lcov -o coverage.lcov
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v3
 
