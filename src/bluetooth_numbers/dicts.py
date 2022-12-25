@@ -1,6 +1,7 @@
 """Module with specialized dictionary classes for UUIDs, CICs and OUIs."""
 from __future__ import annotations
 
+from typing import Dict
 from uuid import UUID
 
 from bluetooth_numbers.exceptions import (
@@ -18,7 +19,7 @@ from bluetooth_numbers.utils import (
 )
 
 
-class CICDict(dict[int, str]):
+class CICDict(Dict[int, str]):  # noqa
     """Dictionary class to hold 16-bit company codes and their names.
 
     You can use this class as a dict with the following differences:
@@ -48,7 +49,7 @@ class CICDict(dict[int, str]):
         raise No16BitIntegerError(key)
 
 
-class OUIDict(dict[str, str]):
+class OUIDict(Dict[str, str]):  # noqa
     """Dictionary class to hold OUIs and their names.
 
     You can use this class as a dict with the following differences:
@@ -84,7 +85,7 @@ class OUIDict(dict[str, str]):
         return self[normalize_oui(key)]
 
 
-class UUIDDict(dict[UUID | int, str]):
+class UUIDDict(Dict[UUID | int, str]):  # noqa
     """Dictionary class to hold 16-bit and 128-bit standard UUID keys and descriptions.
 
     You can use this class as a dict for Bluetooth UUIDs, with the following
