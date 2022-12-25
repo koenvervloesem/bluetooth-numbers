@@ -23,9 +23,9 @@ def test_uuid16(uuid: int, name: str) -> None:
 @pytest.mark.parametrize(
     "uuid",
     [
-        (-1),
-        (65536),
-        (6.5),
+        -1,
+        65536,
+        6.5,
     ],
 )
 def test_invalid_uuid16(uuid: int) -> None:
@@ -41,9 +41,9 @@ def test_invalid_uuid16(uuid: int) -> None:
 @pytest.mark.parametrize(
     "uuid",
     [
-        (0x0000),
-        (0x2ACA),
-        (0xFFFF),
+        0x0000,
+        0x2ACA,
+        0xFFFF,
     ],
 )
 def test_unknown_uuid16(uuid: int) -> None:
@@ -88,8 +88,8 @@ def test_uuid16_as_uuid128(uuid: UUID, name: str) -> None:
 @pytest.mark.parametrize(
     "uuid",
     [
-        (UUID("2ac35699-9af0-4228-80fb-8ca56c77ac73")),
-        (UUID("9652BA73-AA7C-4B56-BB93-CCC6D44937C8")),
+        UUID("2ac35699-9af0-4228-80fb-8ca56c77ac73"),
+        UUID("9652BA73-AA7C-4B56-BB93-CCC6D44937C8"),
     ],
 )
 def test_unknown_uuid128(uuid: UUID) -> None:

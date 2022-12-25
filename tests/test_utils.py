@@ -57,9 +57,9 @@ def test_normalize_oui(oui: str, normalized: str) -> None:
 @pytest.mark.parametrize(
     "oui",
     [
-        ("AB:CD:EF:GH:IJ:KL"),
-        ("gg-hh-ii"),
-        ("FOOBAR"),
+        "AB:CD:EF:GH:IJ:KL",
+        "gg-hh-ii",
+        "FOOBAR",
     ],
 )
 def test_normalize_oui_exceptions(oui: str) -> None:
@@ -112,9 +112,9 @@ def test_uint16_to_hex(number: int, hex_string: str) -> None:
 @pytest.mark.parametrize(
     "number",
     [
-        (-1),
-        (65536),
-        (4.5),
+        -1,
+        65536,
+        4.5,
     ],
 )
 def test_invalid_uint16_to_hex(number: int) -> None:
@@ -144,9 +144,9 @@ def test_uuid16_to_uuid128(uuid16: int, uuid128: UUID) -> None:
 @pytest.mark.parametrize(
     "uuid16",
     [
-        (-1),
-        (65536),
-        (4.5),
+        -1,
+        65536,
+        4.5,
     ],
 )
 def test_invalid_uuid16_to_uuid128(uuid16: int) -> None:
@@ -176,8 +176,8 @@ def test_uuid128_to_uuid16(uuid128: UUID, uuid16: int) -> None:
 @pytest.mark.parametrize(
     "uuid128",
     [
-        (UUID("bfc46884-ea75-416b-8154-29c5d0b0a087")),
-        (UUID("00001800-0000-1000-8000-00805F9B34FC")),
+        UUID("bfc46884-ea75-416b-8154-29c5d0b0a087"),
+        UUID("00001800-0000-1000-8000-00805F9B34FC"),
     ],
 )
 def test_invalid_uuid128_to_uuid16(uuid128: UUID) -> None:

@@ -25,8 +25,8 @@ def test_oui(prefix: str, name: str) -> None:
 @pytest.mark.parametrize(
     "prefix",
     [
-        ("FOOBAR"),
-        ("AB-CD-EF-GH"),
+        "FOOBAR",
+        "AB-CD-EF-GH",
     ],
 )
 def test_invalid_oui(prefix: str) -> None:
@@ -41,8 +41,8 @@ def test_invalid_oui(prefix: str) -> None:
 @pytest.mark.parametrize(
     "prefix",
     [
-        ("12:34:56"),
-        ("AB:CD:EF"),
+        "12:34:56",
+        "AB:CD:EF",
     ],
 )
 def test_unknown_oui(prefix: str) -> None:
