@@ -1,7 +1,7 @@
 """Module with specialized dictionary classes for UUIDs, CICs and OUIs."""
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Union
 from uuid import UUID
 
 from bluetooth_numbers.exceptions import (
@@ -85,7 +85,7 @@ class OUIDict(Dict[str, str]):  # noqa
         return self[normalize_oui(key)]
 
 
-class UUIDDict(Dict[UUID | int, str]):  # noqa
+class UUIDDict(Dict[Union[UUID, int], str]):  # noqa
     """Dictionary class to hold 16-bit and 128-bit standard UUID keys and descriptions.
 
     You can use this class as a dict for Bluetooth UUIDs, with the following
