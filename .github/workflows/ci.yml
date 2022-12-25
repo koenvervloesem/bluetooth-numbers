@@ -74,20 +74,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
+        id: setup-python
         with:
           python-version: ${{ matrix.python }}
-      - name: Show Python path
-        run: echo ${{ steps.setup-python.outputs.python-path }}
       - name: Retrieve pre-built distribution files
         uses: actions/download-artifact@v3
         with: {name: python-distribution-files, path: dist/}
       - name: Run tests
         run: >-
-          pipx run --verbose --python python --spec tox==3.27.1 tox
+          pipx run --verbose --python '${{ steps.setup-python.outputs.python-path }}'
+          --spec tox==3.27.1 tox
           --installpkg '${{ needs.prepare.outputs.wheel-distribution }}'
           -- -rFEx --durations 10 --color yes
       - name: Generate coverage report
-        run: pipx run --python python coverage lcov -o coverage.lcov
+        run: >-
+          pipx run --python '${{ steps.setup-python.outputs.python-path }}'
+          coverage lcov -o coverage.lcov
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v3
 
