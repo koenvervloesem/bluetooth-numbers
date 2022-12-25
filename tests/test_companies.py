@@ -26,10 +26,10 @@ def test_company(code: int, name: str) -> None:
 @pytest.mark.parametrize(
     "code",
     [
-        (-1),
-        (65536),
-        (6.5),
-        ("test"),
+        -1,
+        65536,
+        6.5,
+        "test",
     ],
 )
 def test_invalid_company(code: int) -> None:
@@ -45,8 +45,8 @@ def test_invalid_company(code: int) -> None:
 @pytest.mark.parametrize(
     "code",
     [
-        (0xEEEE),
-        (65534),
+        0xEEEE,
+        65534,
     ],
 )
 def test_unknown_company(code: int) -> None:
