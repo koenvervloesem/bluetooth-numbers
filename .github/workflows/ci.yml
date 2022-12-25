@@ -81,7 +81,7 @@ jobs:
         with: {name: python-distribution-files, path: dist/}
       - name: Run tests
         run: >-
-          pipx run --python python --spec tox==3.27.1 tox
+          pipx run --verbose --python python --spec tox==3.27.1 tox
           --installpkg '${{ needs.prepare.outputs.wheel-distribution }}'
           -- -rFEx --durations 10 --color yes
       - name: Generate coverage report
