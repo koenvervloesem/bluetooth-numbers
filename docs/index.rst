@@ -1,8 +1,5 @@
-=================
-bluetooth-numbers
-=================
-
-This is the documentation of **bluetooth-numbers**.
+.. include:: ../README.rst
+   :end-before: inclusion-marker-after-intro
 
 Contents
 ========
@@ -10,7 +7,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   Overview <readme>
+   Installation and usage <usage>
    Contributions & Help <contributing>
    License <license>
    Authors <authors>
