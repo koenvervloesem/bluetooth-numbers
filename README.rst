@@ -35,6 +35,8 @@ The following sources are used:
 * `Bluetooth Assigned Numbers <https://www.bluetooth.com/specifications/assigned-numbers/>`_ for SDO Service UUIDs and Member Service UUIDs
 * The `IEEE database of OUIs <https://standards-oui.ieee.org/oui/oui.txt>`_ for prefixes of Bluetooth addresses
 
+.. inclusion-marker-after-intro
+
 Installation
 ============
 
@@ -90,6 +92,10 @@ Get the description of an OUI:
 	>>> from bluetooth_numbers import oui
 	>>> oui["58:2D:34"]
 	'Qingping Electronics (Suzhou) Co., Ltd'
+
+See the `module reference <https://bluetooth-numbers.readthedocs.io/en/latest/api/modules.html>`_ for complete documentation.
+
+.. inclusion-marker-before-license
 
 License
 =======
