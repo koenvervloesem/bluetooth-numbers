@@ -17,6 +17,26 @@
     :alt: License
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/LICENSE.txt
 
+.. inclusion-marker-before-numbers
+
+.. image:: https://img.shields.io/badge/Companies-2973-blue
+    :alt: Companies
+    :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_companies.py
+.. image:: https://img.shields.io/badge/Services-688-blue
+    :alt: Services
+    :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_services.py
+.. image:: https://img.shields.io/badge/Characteristics-602-blue
+    :alt: Characteristics
+    :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_characteristics.py
+.. image:: https://img.shields.io/badge/Descriptors-16-blue
+    :alt: Descriptors
+    :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_descriptors.py
+.. image:: https://img.shields.io/badge/OUIs-33097-blue
+    :alt: OUIs
+    :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_ouis.py
+
+.. inclusion-marker-after-numbers
+
 |
 
 =================
