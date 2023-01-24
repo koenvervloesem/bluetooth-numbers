@@ -79,6 +79,8 @@ Code Contributions
 
 The goal of this project is to provide a shared resource so various Python projects that deal with Bluetooth don't have to replicate this effort by rolling their own database and keeping it updated. We welcome any contribution that helps reaching this goal.
 
+That said, we try to contribute as much as possible to the upstream sources of the data in this package. So, if you want to extend the company IDs, service UUIDs, characteristic UUIDs or descriptor UUIDs, or if you want to correct some data, we ask you to contribute this to Nordic Semiconductor's `Bluetooth Numbers Database <https://github.com/NordicSemiconductor/bluetooth-numbers-database>`_ if possible.
+
 Submit an issue
 ---------------
 
