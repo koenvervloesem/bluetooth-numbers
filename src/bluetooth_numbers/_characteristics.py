@@ -508,7 +508,9 @@ characteristic = UUIDDict(
         UUID("A3C87508-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Public ECDH Key",
         UUID("A3C87509-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone EID Identity Key",
         UUID("A3C8750A-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone ADV Slot Data",
-        UUID("A3C8750B-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Avanced Factory Reset",
+        UUID(
+            "A3C8750B-8ED3-4BDF-8A39-A01BEBEDE295"
+        ): "Eddystone Advanced Factory Reset",
         UUID(
             "A3C8750C-8ED3-4BDF-8A39-A01BEBEDE295"
         ): "Eddystone (Advanced) Remain Connectable",
