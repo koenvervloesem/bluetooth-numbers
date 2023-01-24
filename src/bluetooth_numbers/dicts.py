@@ -42,7 +42,15 @@ class CICDict(Dict[int, str]):  # noqa
     """
 
     def __missing__(self, key: int) -> str:
-        """Try the key and raise exception when it's invalid."""
+        """Try the key and raise exception when it's invalid.
+
+        Args:
+            key (int): The key to check.
+
+        Raises:
+            No16BitIntegerError: If ``key`` isn't a 16-bit unsigned integer.
+            UnknownCICError: If ``key`` isn't in this CICDict instance.
+        """
         if is_uint16(key):
             raise UnknownCICError(key)
 
@@ -78,7 +86,19 @@ class OUIDict(Dict[str, str]):  # noqa
     """
 
     def __missing__(self, key: str) -> str:
-        """Try the key and raise exception when it's invalid."""
+        """Try the key and raise exception when it's invalid.  # noqa
+
+        Args:
+            key (str): The key to check.
+
+        Raises:
+            UnknownOUIError: If ``key`` isn't in this OUIDict instance.
+            WrongOUIFormatError: If ``key`` doesn't have one of the supported
+              formats.
+
+        Returns:
+            str: The name corresponding to ``key``.
+        """
         if is_normalized_oui(key):
             raise UnknownOUIError(key)
 
@@ -114,7 +134,18 @@ class UUIDDict(Dict[Union[UUID, int], str]):  # noqa
     """
 
     def __missing__(self, key: UUID | int) -> str:
-        """Try the key converted to 16-bit UUID."""
+        """Try the key converted to 16-bit UUID.
+
+        Args:
+            key (UUID | int): The 128-bit or 16-bit UUID to check.
+
+        Raises:
+            No16BitIntegerError: If ``key`` isn't a 16-bit unsigned integer.
+            UnknownUUIDError: If ``key`` isn't in this UUIDDict instance.
+
+        Returns:
+            str: The name corresponding to ``key``.
+        """
         if isinstance(key, UUID):
             try:
                 uuid16_key = uuid128_to_uuid16(key)

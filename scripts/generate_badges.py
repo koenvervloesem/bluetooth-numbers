@@ -10,7 +10,11 @@ REPO = "https://github.com/koenvervloesem/bluetooth-numbers/"
 
 
 def create_badges() -> str:
-    """Generate badges with amounts for Bluetooth numbers."""
+    """Generate badges with amounts for Bluetooth numbers.
+
+    Returns:
+        str: Code for the badges in RST syntax.
+    """
     badges = create_badge("Companies", len(company))
     badges += create_badge("Services", len(service))
     badges += create_badge("Characteristics", len(characteristic))

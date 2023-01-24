@@ -23,9 +23,11 @@ env = Environment(loader=file_loader)
 def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
     """Generate 16-bit UUID dictionary for a module.
 
-    The parameter `kind` should be "sdo_service".
+    Args:
+        kind (str): Should be "sdo_service".
 
-    Returns a dict with uuid16 keys and their name.
+    Returns:
+        dict[int, str]: A dict with 16-bit UUIDs as keys.
     """
     uuid16_dict = {}
 
@@ -42,9 +44,12 @@ def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
 def generate_uuid_dictionaries(kind: str) -> tuple[dict[int, str], dict[str, str]]:
     """Generate UUID dictionaries for a module.
 
-    The parameter `kind` should be "service", "characteristic", or "descriptor".
+    Args:
+        kind (str): Should be "service", "characteristic", or "descriptor".
 
-    Returns a tuple of dicts with uuid16 and uuid128 keys and their name.
+    Returns:
+        tuple[dict[int, str], dict[str, str]]: A tuple of dicts. The first dict
+          has 16-bit UUIDs as keys, the second one 128-bit UUIDs.
     """
     uuid16_dict = {}
     uuid128_dict = {}
@@ -67,7 +72,10 @@ def generate_uuid_module(
 ) -> None:
     """Generate Python module for UUIDs.
 
-    The parameter `kind` should be "service", "characteristic", or "descriptor".
+    Args:
+        kind (str): Should be "service", "characteristic", or "descriptor".
+        uuid16_dict (dict[int, str]): Dict with 16-bit UUIDs as keys.
+        uuid128_dict (dict[str, str]): Dict with 128-bit UUIDs as keys.
     """
     template = env.get_template(UUID_TEMPLATE)
     with (Path(CODE_DIR) / f"_{kind}s.py").open("w") as python_file:
@@ -80,7 +88,8 @@ def generate_uuid_module(
 def generate_cic_dictionary() -> dict[str, str]:
     """Generate Company ID Code dictionary for a module.
 
-    Returns a dict with CIC keys and their name.
+    Returns:
+        dict[str, str]: A dict with CIC keys and their name.
     """
     cic_dict = {}
 
@@ -95,7 +104,12 @@ def generate_cic_dictionary() -> dict[str, str]:
 
 
 def generate_cic_module(cic_dict: dict[str, str]) -> None:
-    """Generate Python module for Company ID Codes."""
+    """Generate Python module for Company ID Codes.
+
+    Args:
+        cic_dict (dict[str, str]): The dict with CICs to generate a Python
+          module for.
+    """
     template = env.get_template(CIC_TEMPLATE)
     with (Path(CODE_DIR) / "_companies.py").open("w") as python_file:
         python_file.write("# pylint: skip-file\n")
@@ -105,7 +119,8 @@ def generate_cic_module(cic_dict: dict[str, str]) -> None:
 def generate_oui_dictionary() -> dict[str, str]:
     """Generate OUI dictionary for a module.
 
-    Returns a dict with OUI prefixes and their name.
+    Returns:
+        dict[str, str]: A dict with OUI prefixes and their name.
     """
     oui_dict = {}
 
@@ -119,7 +134,12 @@ def generate_oui_dictionary() -> dict[str, str]:
 
 
 def generate_oui_module(oui_dict: dict[str, str]) -> None:
-    """Generate Python module for OUIs."""
+    """Generate Python module for OUIs.
+
+    Args:
+        oui_dict (dict[str, str]): The dict with OUIs to generate a Python
+          module for.
+    """
     template = env.get_template(OUI_TEMPLATE)
     with (Path(CODE_DIR) / "_ouis.py").open("w") as python_file:
         python_file.write("# pylint: skip-file\n")
