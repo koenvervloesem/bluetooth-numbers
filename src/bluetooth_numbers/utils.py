@@ -8,8 +8,8 @@ from bluetooth_numbers.exceptions import (
     WrongOUIFormatError,
 )
 
-BASE_UUID = UUID("00000000-0000-1000-8000-00805F9B34FB")
-"""UUID: Base UUID defined by the Bluetooth SIG."""
+BASE_UUID: UUID = UUID("00000000-0000-1000-8000-00805F9B34FB")
+"""Base UUID defined by the Bluetooth SIG."""
 
 _OUI_RE = re.compile(r"^([0-9A-F]{2})[-:]*([0-9A-F]{2})[-:]*([0-9A-F]{2})$")
 _NORMALIZED_OUI_RE = re.compile(r"^[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}$")
@@ -74,7 +74,7 @@ def uuid128_to_uuid16(uuid128: UUID) -> int:
     """Convert a 128-bit standard Bluetooth UUID to a 16-bit UUID.
 
     Args:
-        uuid128 (UUID): A 128-bit standard Bluetooth UUID.
+        uuid128 (~uuid.UUID): A 128-bit standard Bluetooth UUID.
 
     Raises:
         NonStandardUUIDError: If `uuid128` is not a 128-bit standard Bluetooth UUID.
@@ -108,7 +108,7 @@ def uuid16_to_uuid128(uuid16: int) -> UUID:
         No16BitIntegerError: If `uuid16` is not an integer from 0 to 65535.
 
     Returns:
-        UUID: A 128-bit UUID that is the full UUID of `uuid16`.
+        ~uuid.UUID: A 128-bit UUID that is the full UUID of `uuid16`.
 
     Example:
         >>> from bluetooth_numbers.utils import uuid16_to_uuid128
