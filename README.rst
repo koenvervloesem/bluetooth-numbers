@@ -31,7 +31,7 @@
 .. image:: https://img.shields.io/badge/Descriptors-16-blue
     :alt: Descriptors
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_descriptors.py
-.. image:: https://img.shields.io/badge/OUIs-33097-blue
+.. image:: https://img.shields.io/badge/OUIs-33246-blue
     :alt: OUIs
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_ouis.py
 
