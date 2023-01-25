@@ -94,6 +94,7 @@ jobs:
         uses: codecov/codecov-action@v3
 
   publish:
+    needs: test
     if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags/') }}
     runs-on: ubuntu-latest
     steps:
