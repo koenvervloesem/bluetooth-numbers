@@ -2,6 +2,32 @@
 Changelog
 =========
 
+Version 1.0.1 (2023-01-25)
+==========================
+
+This is a bugfix release, mostly with updated data:
+
+* The OUI database has been updated to 2023-01-25.
+* The Bluetooth Numbers Database has been updated with some fixes. Upstream PRs: https://github.com/NordicSemiconductor/bluetooth-numbers-database/pull/93 and https://github.com/NordicSemiconductor/bluetooth-numbers-database/pull/96.
+
+What's Changed
+--------------
+
+* CI: Run publish job in Python 3.11 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/8
+* Fix docstrings for correct rendering by Sphinx by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/9
+* Specify Python version with pipx run by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/11
+* Add modern typing by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/10
+* Check tests for style by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/12
+* Enable extra Flake8 plugins by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/13
+* Adds and updates pre-commit hooks by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/14
+* Improve index, installation and usage pages of documentation by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/15
+* Add badges with amount of Bluetooth numbers to README by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/16
+* Update to PyScaffold v4.4 project features by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/18
+* Change documentation theme to furo by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/19
+* Documentation updates by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/20
+* Update Bluetooth Numbers Database to commit d05e669 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/21
+* Update OUI database to 2023-01-25 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/22
+
 Version 1.0.0 (2022-12-22)
 ==========================
 
