@@ -74,7 +74,7 @@ def uuid128_to_uuid16(uuid128: UUID) -> int:
     """Convert a 128-bit standard Bluetooth UUID to a 16-bit UUID.
 
     Args:
-        uuid128 (~uuid.UUID): A 128-bit standard Bluetooth UUID.
+        uuid128 (~uuid.UUID): A 128-bit Bluetooth UUID.
 
     Raises:
         NonStandardUUIDError: If `uuid128` is not a 128-bit standard Bluetooth UUID.
@@ -84,18 +84,40 @@ def uuid128_to_uuid16(uuid128: UUID) -> int:
 
     Example:
         >>> from bluetooth_numbers.utils import uuid128_to_uuid16, uint16_to_hex
+        >>> from uuid import UUID
         >>> uint16_to_hex(uuid128_to_uuid16(UUID('00001800-0000-1000-8000-00805f9b34fb')))
         '0x1800'
     """
-    # Test whether the 128-bit UUID is a standard Bluetooth UUID
+    if is_standard_uuid128(uuid128):
+        # Extract the 16-bit UUID
+        return int.from_bytes(uuid128.bytes[2:4], "big")
+
+    raise NonStandardUUIDError(uuid128)
+
+
+def is_standard_uuid128(uuid128: UUID) -> bool:
+    """Check whether a 128-bit Bluetooth UUID is a standard UUID.
+
+    Args:
+        uuid128 (~uuid.UUID): A 128-bit Bluetooth UUID.
+
+    Returns:
+        bool: ``True`` if `uuid128` is a standard Bluetooth UUID, ``False`` otherwise.
+
+    Examples:
+        >>> from bluetooth_numbers.utils import is_standard_uuid128
+        >>> from uuid import UUID
+        >>> is_standard_uuid128(UUID('00001800-0000-1000-8000-00805f9b34fb'))
+        True
+        >>> is_standard_uuid128(UUID('bfc46884-ea75-416b-8154-29c5d0b0a087'))
+        False
+
+    .. versionadded:: 1.1.0
+    """
     uuid128_bytearray = bytearray(uuid128.bytes)
     uuid128_bytearray[2:4] = b"\x00\x00"
     uuid128_masked = UUID(bytes=bytes(uuid128_bytearray))
-    if uuid128_masked != BASE_UUID:
-        raise NonStandardUUIDError(uuid128_masked)
-
-    # If it is, extract the 16-bit UUID
-    return int.from_bytes(uuid128.bytes[2:4], "big")
+    return uuid128_masked == BASE_UUID
 
 
 def uuid16_to_uuid128(uuid16: int) -> UUID:

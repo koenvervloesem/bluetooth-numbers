@@ -10,6 +10,7 @@ from bluetooth_numbers.exceptions import (
 )
 from bluetooth_numbers.utils import (
     is_normalized_oui,
+    is_standard_uuid128,
     is_uint16,
     normalize_oui,
     uint16_to_hex,
@@ -156,6 +157,24 @@ def test_invalid_uuid16_to_uuid128(uuid16: int) -> None:
     """
     with pytest.raises(No16BitIntegerError):
         uuid16_to_uuid128(uuid16)
+
+
+@pytest.mark.parametrize(
+    "uuid128, standard",
+    [
+        (UUID("00001800-0000-1000-8000-00805F9B34FB"), True),
+        (UUID("0000FD6F-0000-1000-8000-00805F9B34FB"), True),
+        (UUID("bfc46884-ea75-416b-8154-29c5d0b0a087"), False),
+        (UUID("00001800-0000-1000-8000-00805F9B34FC"), False),
+    ],
+)
+def test_is_standard_uuid128(uuid128: UUID, standard: bool) -> None:
+    """Test the is_standard_uuid128 function.
+
+    It should return ``True`` for a 128-bit standard Bluetooth UUID,
+    ``False`` otherwise.
+    """
+    assert is_standard_uuid128(uuid128) == standard
 
 
 @pytest.mark.parametrize(
