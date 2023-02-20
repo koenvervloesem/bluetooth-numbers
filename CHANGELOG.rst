@@ -2,6 +2,23 @@
 Changelog
 =========
 
+Version 1.1.0 (2023-02-20)
+==========================
+
+This is a small feature release. Apart from the updated data, there's a new function :func:`bluetooth_numbers.utils.is_standard_uuid128` that checks whether a 128-bit Bluetooth UUID is a standard UUID.
+
+What's Changed
+--------------
+
+* Fix publish job in CI: it needs the test job by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/24
+* Update OUI badge to 2023-01-25 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/25
+* Autoupdate pre-commit by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/26
+* Add function is_standard_uuid128 to utils by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/27
+* Update Bluetooth Numbers Database to commit e1683ef by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/28
+* Update OUI database to 2023-02-20 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/29
+* Update member service UUIDs to 2023-02-17 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/30
+* Add info about updating data to CONTRIBUTING docs by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/31
+
 Version 1.0.1 (2023-01-25)
 ==========================
 
