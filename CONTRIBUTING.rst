@@ -238,6 +238,15 @@ package:
 Maintainer tasks
 ================
 
+Updating data
+-------------
+
+#. Run ``git submodule update --remote`` to update the Bluetooth Numbers Database to the newest version.
+#. Enter the ``data`` directory and run ``wget https://standards-oui.ieee.org/oui/oui.txt`` to download the newest OUIs.
+#. Download the latest Assigned Numbers document and add the new values to ``data/member_service_uuids.json`` and/or ``data/sdo_service_uuids.json``.
+#. Run ``pre-commit run generate-modules --hook-stage manual --all-files`` to generate the project’s modules from the newest data.
+#. Run ``pre-commit run --all-files`` to clean up the generated modules.
+
 Releases
 --------
 
@@ -245,9 +254,7 @@ If you are part of the group of maintainers and have correct user permissions
 on PyPI_, the following steps can be used to release a new version for
 ``bluetooth-numbers``:
 
-#. Run ``git submodule update --remote`` to update the Bluetooth Numbers Database to the newest version.
-#. Run ``pre-commit run generate-modules --hook-stage manual`` to generate the project's modules from the newest data.
-#. Make sure all unit tests are successful.
+#. Make sure all unit tests are successful by running ``tox``.
 #. Tag the current commit on the main branch with a release tag, e.g., ``v1.2.3``.
 #. Push the new tag to the upstream repository_, e.g., ``git push upstream v1.2.3``
 #. Clean up the ``dist`` and ``build`` folders with ``tox -e clean``
