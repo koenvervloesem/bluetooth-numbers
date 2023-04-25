@@ -20,7 +20,7 @@ from bluetooth_numbers.utils import (
 
 
 @pytest.mark.parametrize(
-    "oui, result",
+    ("oui", "result"),
     [
         ("70:BC:10", True),
         ("44:ec:ce", False),
@@ -40,7 +40,7 @@ def test_is_normalized_oui(oui: str, result: bool) -> None:
 
 
 @pytest.mark.parametrize(
-    "oui, normalized",
+    ("oui", "normalized"),
     [
         ("00:1B:C0", "00:1B:C0"),
         ("c0:d0:ff", "C0:D0:FF"),
@@ -74,7 +74,7 @@ def test_normalize_oui_exceptions(oui: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "number, result",
+    ("number", "result"),
     [
         (0x0000, True),
         (0x1800, True),
@@ -95,7 +95,7 @@ def test_is_uint16(number: int, result: bool) -> None:
 
 
 @pytest.mark.parametrize(
-    "number, hex_string",
+    ("number", "hex_string"),
     [
         (0x004C, "0x004c"),
         (0x0499, "0x0499"),
@@ -128,7 +128,7 @@ def test_invalid_uint16_to_hex(number: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "uuid16, uuid128",
+    ("uuid16", "uuid128"),
     [
         (0x1800, UUID("00001800-0000-1000-8000-00805F9B34FB")),
         (0xFD6F, UUID("0000FD6F-0000-1000-8000-00805F9B34FB")),
@@ -160,7 +160,7 @@ def test_invalid_uuid16_to_uuid128(uuid16: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "uuid128, standard",
+    ("uuid128", "standard"),
     [
         (UUID("00001800-0000-1000-8000-00805F9B34FB"), True),
         (UUID("0000FD6F-0000-1000-8000-00805F9B34FB"), True),
@@ -178,7 +178,7 @@ def test_is_standard_uuid128(uuid128: UUID, standard: bool) -> None:
 
 
 @pytest.mark.parametrize(
-    "uuid128, uuid16",
+    ("uuid128", "uuid16"),
     [
         (UUID("00001800-0000-1000-8000-00805F9B34FB"), 0x1800),
         (UUID("0000FD6F-0000-1000-8000-00805F9B34FB"), 0xFD6F),

@@ -6,7 +6,7 @@ from bluetooth_numbers.exceptions import UnknownOUIError, WrongOUIFormatError
 
 
 @pytest.mark.parametrize(
-    "prefix, name",
+    ("prefix", "name"),
     [
         ("58:2D:34", "Qingping Electronics (Suzhou) Co., Ltd"),
         ("C4:7C:8D", "IEEE Registration Authority"),

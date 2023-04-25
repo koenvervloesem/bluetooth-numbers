@@ -8,7 +8,7 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
 
 
 @pytest.mark.parametrize(
-    "uuid, name",
+    ("uuid", "name"),
     [
         (0x1800, "Generic Access"),
         (0x1812, "Human Interface Device"),
@@ -57,7 +57,7 @@ def test_unknown_uuid16(uuid: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "uuid, name",
+    ("uuid", "name"),
     [
         (
             UUID("7905F431-B5CE-4E99-A40F-4B1E122D00D0"),
@@ -73,7 +73,7 @@ def test_uuid128(uuid: UUID, name: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "uuid, name",
+    ("uuid", "name"),
     [
         (UUID("00001800-0000-1000-8000-00805F9B34FB"), "Generic Access"),
         (UUID("00001812-0000-1000-8000-00805F9B34FB"), "Human Interface Device"),

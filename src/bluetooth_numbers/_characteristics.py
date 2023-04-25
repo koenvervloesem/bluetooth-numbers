@@ -455,7 +455,7 @@ characteristic = UUIDDict(
         UUID("DA2E7828-FBCE-4E01-AE9E-261174997C48"): "SMP Characteristic",
         UUID("932C32BD-0002-47A2-835A-A8D455B859DD"): "Philips Hue Light On/Off Toggle",
         UUID(
-            "932C32BD-0003-47A2-835A-A8D455B859DD"
+            "932C32BD-0003-47A2-835A-A8D455B859DD",
         ): "Philips Hue Light Brightness Level",
         UUID("932C32BD-0005-47A2-835A-A8D455B859DD"): "Philips Hue Light Color",
         UUID("EF680101-9B35-4933-9B10-52FFA9740042"): "Thingy Device Name",
@@ -491,17 +491,17 @@ characteristic = UUIDDict(
         UUID("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"): "UART RX Characteristic",
         UUID("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"): "UART TX Characteristic",
         UUID(
-            "E2A00002-EC31-4EC3-A97A-1C34D87E9878"
+            "E2A00002-EC31-4EC3-A97A-1C34D87E9878",
         ): "Edge Impulse Remote Management RX Characteristic",
         UUID(
-            "E2A00003-EC31-4EC3-A97A-1C34D87E9878"
+            "E2A00003-EC31-4EC3-A97A-1C34D87E9878",
         ): "Edge Impulse Remote Management TX Characteristic",
         UUID("A3C87501-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Capabilities",
         UUID("A3C87502-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Active Slot",
         UUID("A3C87503-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Advertising Interval",
         UUID("A3C87504-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Radio Tx Power",
         UUID(
-            "A3C87505-8ED3-4BDF-8A39-A01BEBEDE295"
+            "A3C87505-8ED3-4BDF-8A39-A01BEBEDE295",
         ): "Eddystone (Advanced) Advertised Tx Power",
         UUID("A3C87506-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Lock State",
         UUID("A3C87507-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Unlock",
@@ -509,10 +509,10 @@ characteristic = UUIDDict(
         UUID("A3C87509-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone EID Identity Key",
         UUID("A3C8750A-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone ADV Slot Data",
         UUID(
-            "A3C8750B-8ED3-4BDF-8A39-A01BEBEDE295"
+            "A3C8750B-8ED3-4BDF-8A39-A01BEBEDE295",
         ): "Eddystone Advanced Factory Reset",
         UUID(
-            "A3C8750C-8ED3-4BDF-8A39-A01BEBEDE295"
+            "A3C8750C-8ED3-4BDF-8A39-A01BEBEDE295",
         ): "Eddystone (Advanced) Remain Connectable",
         UUID("FE2C1233-8366-4814-8EB0-01DE32100BEA"): "Fast Pair Model ID",
         UUID("FE2C1234-8366-4814-8EB0-01DE32100BEA"): "Fast Pair Key-based Pairing",
@@ -585,13 +585,13 @@ characteristic = UUIDDict(
         UUID("E95D9250-251D-470A-A062-FA1922DFA9A8"): "micro:bit Temperature",
         UUID("E95D1B25-251D-470A-A062-FA1922DFA9A8"): "micro:bit Temperature Period",
         UUID(
-            "00001624-1212-EFDE-1623-785FEABCD123"
+            "00001624-1212-EFDE-1623-785FEABCD123",
         ): "LEGO® Wireless Protocol v3 Hub Characteristic",
         UUID(
-            "00001626-1212-EFDE-1623-785FEABCD123"
+            "00001626-1212-EFDE-1623-785FEABCD123",
         ): "LEGO® Wireless Protocol v3 Bootloader Characteristic",
         UUID(
-            "ADAF0001-C332-42A8-93BD-25E905756CB8"
+            "ADAF0001-C332-42A8-93BD-25E905756CB8",
         ): "Adafruit Sensor Measurement Period",
         UUID("ADAF0002-C332-42A8-93BD-25E905756CB8"): "Adafruit Sensor Service Version",
         UUID("ADAF0101-C332-42A8-93BD-25E905756CB8"): "Adafruit Temperature",
@@ -617,7 +617,7 @@ characteristic = UUIDDict(
         UUID("ADAF0100-4669-6C65-5472-616E73666572"): "Adafruit Version",
         UUID("ADAF0200-4669-6C65-5472-616E73666572"): "Adafruit Raw TX/RX",
         UUID(
-            "F000FFC1-0451-4000-B000-000000000000"
+            "F000FFC1-0451-4000-B000-000000000000",
         ): "Texas Instruments Image Identify",
         UUID("F000FFC2-0451-4000-B000-000000000000"): "Texas Instruments Image Block",
         UUID("F000FFC5-0451-4000-B000-000000000000"): "Texas Instruments OAD Control",
@@ -634,22 +634,22 @@ characteristic = UUIDDict(
         UUID("E5866BD6-0288-4476-98CA-EF7DA6B4D289"): "Helium Hotspot Ethernet Online",
         UUID("8CC6E0B3-98C5-40CC-B1D8-692940E6994B"): "Helium Hotspot WiFi Remove",
         UUID(
-            "E125BDA4-6FB8-11EA-BC55-0242AC130003"
+            "E125BDA4-6FB8-11EA-BC55-0242AC130003",
         ): "Helium Hotspot WiFi Configured Services",
         UUID(
-            "54220001-F6A5-4007-A371-722F4EBD8436"
+            "54220001-F6A5-4007-A371-722F4EBD8436",
         ): "MDS Supported Features Characteristic",
         UUID(
-            "54220002-F6A5-4007-A371-722F4EBD8436"
+            "54220002-F6A5-4007-A371-722F4EBD8436",
         ): "MDS Device Identifier Characteristic",
         UUID(
-            "54220003-F6A5-4007-A371-722F4EBD8436"
+            "54220003-F6A5-4007-A371-722F4EBD8436",
         ): "MDS Device Data URI Characteristic",
         UUID(
-            "54220004-F6A5-4007-A371-722F4EBD8436"
+            "54220004-F6A5-4007-A371-722F4EBD8436",
         ): "MDS Device Authorization Characteristic",
         UUID(
-            "54220005-F6A5-4007-A371-722F4EBD8436"
+            "54220005-F6A5-4007-A371-722F4EBD8436",
         ): "MDS Device Data Export Characteristic",
-    }
+    },
 )

@@ -344,7 +344,7 @@ service = UUIDDict(
         0xFDC5: "Automatic Labs",
         0xFDC6: "Eli Lilly and Company",
         0xFDC7: "Eli Lilly and Company",
-        0xFDC8: "Hach – Danaher",
+        0xFDC8: "Hach - Danaher",
         0xFDC9: "Busch­Jaeger Elektro GmbH",
         0xFDCA: "Fortin Electronic Systems",
         0xFDCB: "Meggitt SA",
@@ -664,13 +664,13 @@ service = UUIDDict(
         0xFFFD: "Universal Second Factor Authenticator Service service",
         0xFFFE: "Wireless Power Transfer Service service",
         UUID(
-            "932C32BD-0000-47A2-835A-A8D455B859DD"
+            "932C32BD-0000-47A2-835A-A8D455B859DD",
         ): "Philips Hue Light Control Service",
         UUID(
-            "B8843ADD-0000-4AA1-8794-C3F462030BDA"
+            "B8843ADD-0000-4AA1-8794-C3F462030BDA",
         ): "Philips Hue Light Update Service",
         UUID(
-            "7905F431-B5CE-4E99-A40F-4B1E122D00D0"
+            "7905F431-B5CE-4E99-A40F-4B1E122D00D0",
         ): "Apple Notification Center Service",
         UUID("89D3502B-0F36-433A-8EF4-C502AD55F8DC"): "Apple Media Service",
         UUID("7DFC6000-7D1C-4951-86AA-8D9728F8D66C"): "Apple Reserved Service",
@@ -695,17 +695,17 @@ service = UUIDDict(
         UUID("A3C87500-8ED3-4BDF-8A39-A01BEBEDE295"): "Eddystone Configuration Service",
         UUID("00001530-1212-EFDE-1523-785FEABCD123"): "Legacy DFU Service",
         UUID(
-            "8E400001-F315-4F60-9FB8-838830DAEA50"
+            "8E400001-F315-4F60-9FB8-838830DAEA50",
         ): "Experimental Buttonless DFU Service",
         UUID(
-            "E2A00001-EC31-4EC3-A97A-1C34D87E9878"
+            "E2A00001-EC31-4EC3-A97A-1C34D87E9878",
         ): "Edge Impulse Remote Management Service",
         UUID("8D53DC1D-1DB7-4CD3-868B-8A527460AA84"): "SMP Service",
         UUID(
-            "00001623-1212-EFDE-1623-785FEABCD123"
+            "00001623-1212-EFDE-1623-785FEABCD123",
         ): "LEGO® Wireless Protocol v3 Hub Service",
         UUID(
-            "00001625-1212-EFDE-1623-785FEABCD123"
+            "00001625-1212-EFDE-1623-785FEABCD123",
         ): "LEGO® Wireless Protocol v3 Bootloader Service",
         UUID("ADAF0100-C332-42A8-93BD-25E905756CB8"): "Adafruit Temperature Service",
         UUID("ADAF0200-C332-42A8-93BD-25E905756CB8"): "Adafruit Accelerometer Service",
@@ -722,9 +722,9 @@ service = UUIDDict(
         UUID("ADAF0D00-C332-42A8-93BD-25E905756CB8"): "Adafruit Quaternion Service",
         UUID("ADAF0E00-C332-42A8-93BD-25E905756CB8"): "Adafruit Proximity Service",
         UUID(
-            "F000FFC0-0451-4000-B000-000000000000"
+            "F000FFC0-0451-4000-B000-000000000000",
         ): "Texas Instruments Over-the-Air Download (OAD) Service",
         UUID("0FDA92B2-44A2-4AF2-84F5-FA682BAA2B8D"): "Helium Hotspot Custom Service",
         UUID("54220000-F6A5-4007-A371-722F4EBD8436"): "Memfault Diagnostic Service",
-    }
+    },
 )

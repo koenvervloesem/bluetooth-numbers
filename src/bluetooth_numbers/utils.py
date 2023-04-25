@@ -87,7 +87,7 @@ def uuid128_to_uuid16(uuid128: UUID) -> int:
         >>> from uuid import UUID
         >>> uint16_to_hex(uuid128_to_uuid16(UUID('00001800-0000-1000-8000-00805f9b34fb')))
         '0x1800'
-    """
+    """  # noqa: E501
     if is_standard_uuid128(uuid128):
         # Extract the 16-bit UUID
         return int.from_bytes(uuid128.bytes[2:4], "big")
@@ -189,4 +189,4 @@ def is_uint16(number: int) -> bool:
         >>> is_uint16(-1)
         False
     """
-    return isinstance(number, int) and 0 <= number <= 0xFFFF
+    return isinstance(number, int) and 0 <= number <= 0xFFFF  # noqa: PLR2004
