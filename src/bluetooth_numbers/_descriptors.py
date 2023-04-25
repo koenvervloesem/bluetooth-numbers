@@ -1,4 +1,3 @@
-# pylint: skip-file
 """Module with UUIDs and names for Bluetooth descriptors.
 
 Usage:
@@ -7,7 +6,6 @@ Usage:
 >>> descriptor[0x2901]
 'Characteristic User Descriptor'
 """
-# pylint: skip-file
 
 from bluetooth_numbers.dicts import UUIDDict
 

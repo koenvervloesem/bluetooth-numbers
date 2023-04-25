@@ -1,4 +1,3 @@
-# pylint: skip-file
 """Module with OUIs for Bluetooth addresses.
 
 Usage:

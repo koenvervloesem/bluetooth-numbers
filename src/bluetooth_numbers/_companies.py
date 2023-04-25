@@ -1,4 +1,3 @@
-# pylint: skip-file
 """Module with Bluetooth company IDs and their names.
 
 Usage:
