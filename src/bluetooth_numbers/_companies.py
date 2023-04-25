@@ -615,7 +615,7 @@ company = CICDict(
         0x0259: "ALTYOR",
         0x025A: "University of Applied Sciences Valais/Haute Ecole Valaisanne",
         0x025B: "Five Interactive, LLC dba Zendo",
-        0x025C: "NetEase（Hangzhou）Network co.Ltd.",
+        0x025C: "NetEase(Hangzhou)Network co.Ltd.",
         0x025D: "Lexmark International Inc.",
         0x025E: "Fluke Corporation",
         0x025F: "Yardarm Technologies",
@@ -720,7 +720,7 @@ company = CICDict(
         0x02C2: "Guillemot Corporation",
         0x02C3: "Techtronic Power Tools Technology Limited",
         0x02C4: "Wilson Sporting Goods",
-        0x02C5: "Lenovo (Singapore) Pte Ltd. ( 联想（新加坡） )",
+        0x02C5: "Lenovo (Singapore) Pte Ltd. ( 联想(新加坡) )",
         0x02C6: "Ayatan Sensors",
         0x02C7: "Electronics Tomorrow Limited",
         0x02C8: "OneSpan",
@@ -3140,5 +3140,5 @@ company = CICDict(
         0x0C36: "Cosmicnode BV",
         0x0C37: "SignalQuest, LLC",
         0xFFFF: "Bluetooth SIG Specification Reserved Default Vendor ID for Remote Devices Without Device ID Service Record.",
-    }
+    },
 )

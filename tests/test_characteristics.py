@@ -8,7 +8,7 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
 
 
 @pytest.mark.parametrize(
-    "uuid, name",
+    ("uuid", "name"),
     [
         (0x2A7E, "Aerobic Heart Rate Lower Limit"),
         (0x2A37, "Heart Rate Measurement"),
@@ -57,7 +57,7 @@ def test_unknown_uuid16(uuid: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "uuid, name",
+    ("uuid", "name"),
     [
         (UUID("00001524-1212-EFDE-1523-785FEABCD123"), "Blinky Button State"),
         (UUID("ef680301-9B35-4933-9b10-52ffa9740042"), "Thingy LED State"),
@@ -70,7 +70,7 @@ def test_uuid128(uuid: UUID, name: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "uuid, name",
+    ("uuid", "name"),
     [
         (
             UUID("00002A7E-0000-1000-8000-00805F9B34FB"),

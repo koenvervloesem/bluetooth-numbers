@@ -7,14 +7,14 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownCICError
 
 
 @pytest.mark.parametrize(
-    "code, name",
+    ("code", "name"),
     [
         (0x0000, "Ericsson Technology Licensing"),
         (0x004C, "Apple, Inc."),
         (0x0499, "Ruuvi Innovations Ltd."),
         (
             0xFFFF,
-            "Bluetooth SIG Specification Reserved Default Vendor ID for Remote Devices Without Device ID Service Record.",
+            "Bluetooth SIG Specification Reserved Default Vendor ID for Remote Devices Without Device ID Service Record.",  # noqa: E501
         ),
     ],
 )

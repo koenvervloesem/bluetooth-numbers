@@ -6,7 +6,7 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownUUIDError
 
 
 @pytest.mark.parametrize(
-    "uuid, name",
+    ("uuid", "name"),
     [
         (0x2900, "Characteristic Extended Properties"),
         (0x2906, "Valid Range"),

@@ -6,7 +6,8 @@ from bluetooth_numbers import characteristic, company, descriptor, oui, service
 README_FILE = "README.rst"
 BEFORE_NUMBERS = ".. inclusion-marker-before-numbers\n"
 AFTER_NUMBERS = ".. inclusion-marker-after-numbers\n"
-REPO = "https://github.com/koenvervloesem/bluetooth-numbers/"
+REPO = "https://github.com/koenvervloesem/bluetooth-numbers"
+SRC_DIR = "blob/main/src/bluetooth_numbers"
 
 
 def create_badges() -> str:
@@ -35,7 +36,7 @@ def create_badge(description: str, number: int) -> str:
     """
     image = f".. image:: https://img.shields.io/badge/{description}-{number}-blue\n"
     alt = f"    :alt: {description}\n"
-    target = f"    :target: {REPO}blob/main/src/bluetooth_numbers/_{description.lower()}.py\n"
+    target = f"    :target: {REPO}/{SRC_DIR}/_{description.lower()}.py\n"
     return image + alt + target
 
 

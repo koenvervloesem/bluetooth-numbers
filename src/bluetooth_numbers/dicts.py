@@ -19,7 +19,7 @@ from bluetooth_numbers.utils import (
 )
 
 
-class CICDict(Dict[int, str]):  # noqa
+class CICDict(Dict[int, str]):
     """Dictionary class to hold 16-bit company codes and their names.
 
     You can use this class as a dict with the following differences:
@@ -57,7 +57,7 @@ class CICDict(Dict[int, str]):  # noqa
         raise No16BitIntegerError(key)
 
 
-class OUIDict(Dict[str, str]):  # noqa
+class OUIDict(Dict[str, str]):
     """Dictionary class to hold OUIs and their names.
 
     You can use this class as a dict with the following differences:
@@ -86,7 +86,7 @@ class OUIDict(Dict[str, str]):  # noqa
     """
 
     def __missing__(self, key: str) -> str:
-        """Try the key and raise exception when it's invalid.  # noqa
+        """Try the key and raise exception when it's invalid.
 
         Args:
             key (str): The key to check.
@@ -105,7 +105,7 @@ class OUIDict(Dict[str, str]):  # noqa
         return self[normalize_oui(key)]
 
 
-class UUIDDict(Dict[Union[UUID, int], str]):  # noqa
+class UUIDDict(Dict[Union[UUID, int], str]):
     """Dictionary class to hold 16-bit and 128-bit standard UUID keys and descriptions.
 
     You can use this class as a dict for Bluetooth UUIDs, with the following

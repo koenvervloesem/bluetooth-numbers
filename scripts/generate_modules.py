@@ -17,7 +17,7 @@ OUI_TEMPLATE = "ouis.py.jinja"
 OUI_RE = re.compile(r"^([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2})\s*\(hex\)\s+(.*)\s*$")
 
 file_loader = FileSystemLoader(TEMPLATE_DIR)
-env = Environment(loader=file_loader)
+env = Environment(loader=file_loader, autoescape=True)
 
 
 def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
@@ -59,7 +59,7 @@ def generate_uuid_dictionaries(kind: str) -> tuple[dict[int, str], dict[str, str
         for number in json_data:
             name = number["name"]
             uuid = number["uuid"]
-            if len(uuid) == 4:
+            if len(uuid) == 4:  # noqa: PLR2004
                 uuid16_dict[uuid] = name
             else:
                 uuid128_dict[uuid] = name
@@ -68,7 +68,9 @@ def generate_uuid_dictionaries(kind: str) -> tuple[dict[int, str], dict[str, str
 
 
 def generate_uuid_module(
-    kind: str, uuid16_dict: dict[int, str], uuid128_dict: dict[str, str]
+    kind: str,
+    uuid16_dict: dict[int, str],
+    uuid128_dict: dict[str, str],
 ) -> None:
     """Generate Python module for UUIDs.
 
@@ -81,7 +83,7 @@ def generate_uuid_module(
     with (Path(CODE_DIR) / f"_{kind}s.py").open("w") as python_file:
         python_file.write("# pylint: skip-file\n")
         python_file.write(
-            template.render(uuids16=uuid16_dict, uuids128=uuid128_dict, uuid_dict=kind)
+            template.render(uuids16=uuid16_dict, uuids128=uuid128_dict, uuid_dict=kind),
         )
 
 
@@ -160,17 +162,19 @@ if __name__ == "__main__":
             key: value
             for key, value in member_service_uuid16.items()
             if key not in service_uuid16
-        }
+        },
     )
     service_uuid16.update(sdo_service_uuid16)
     generate_uuid_module("service", service_uuid16, service_uuid128)
 
     # Generate module for characteristic UUIDs
     characteristic_uuid16, characteristic_uuid128 = generate_uuid_dictionaries(
-        "characteristic"
+        "characteristic",
     )
     generate_uuid_module(
-        "characteristic", characteristic_uuid16, characteristic_uuid128
+        "characteristic",
+        characteristic_uuid16,
+        characteristic_uuid128,
     )
 
     # Generate module for descriptor UUIDs
