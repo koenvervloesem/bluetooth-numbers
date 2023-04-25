@@ -17,7 +17,7 @@ OUI_TEMPLATE = "ouis.py.jinja"
 OUI_RE = re.compile(r"^([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2})\s*\(hex\)\s+(.*)\s*$")
 
 file_loader = FileSystemLoader(TEMPLATE_DIR)
-env = Environment(loader=file_loader, autoescape=True)
+env = Environment(loader=file_loader, autoescape=False)  # noqa: S701
 
 
 def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
@@ -81,7 +81,6 @@ def generate_uuid_module(
     """
     template = env.get_template(UUID_TEMPLATE)
     with (Path(CODE_DIR) / f"_{kind}s.py").open("w") as python_file:
-        python_file.write("# pylint: skip-file\n")
         python_file.write(
             template.render(uuids16=uuid16_dict, uuids128=uuid128_dict, uuid_dict=kind),
         )
@@ -114,7 +113,6 @@ def generate_cic_module(cic_dict: dict[str, str]) -> None:
     """
     template = env.get_template(CIC_TEMPLATE)
     with (Path(CODE_DIR) / "_companies.py").open("w") as python_file:
-        python_file.write("# pylint: skip-file\n")
         python_file.write(template.render(cics=cic_dict))
 
 
@@ -144,7 +142,6 @@ def generate_oui_module(oui_dict: dict[str, str]) -> None:
     """
     template = env.get_template(OUI_TEMPLATE)
     with (Path(CODE_DIR) / "_ouis.py").open("w") as python_file:
-        python_file.write("# pylint: skip-file\n")
         python_file.write(template.render(ouis=oui_dict))
 
 
