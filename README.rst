@@ -19,19 +19,19 @@
 
 .. inclusion-marker-before-numbers
 
-.. image:: https://img.shields.io/badge/Companies-3129-blue
+.. image:: https://img.shields.io/badge/Companies-3236-blue
     :alt: Companies
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_companies.py
-.. image:: https://img.shields.io/badge/Services-693-blue
+.. image:: https://img.shields.io/badge/Services-707-blue
     :alt: Services
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_services.py
-.. image:: https://img.shields.io/badge/Characteristics-602-blue
+.. image:: https://img.shields.io/badge/Characteristics-603-blue
     :alt: Characteristics
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_characteristics.py
 .. image:: https://img.shields.io/badge/Descriptors-16-blue
     :alt: Descriptors
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_descriptors.py
-.. image:: https://img.shields.io/badge/OUIs-33341-blue
+.. image:: https://img.shields.io/badge/OUIs-33938-blue
     :alt: OUIs
     :target: https://github.com/koenvervloesem/bluetooth-numbers/blob/main/src/bluetooth_numbers/_ouis.py
 
