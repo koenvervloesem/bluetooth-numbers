@@ -9,7 +9,7 @@ from bluetooth_numbers.exceptions import No16BitIntegerError, UnknownCICError
 @pytest.mark.parametrize(
     ("code", "name"),
     [
-        (0x0000, "Ericsson Technology Licensing"),
+        (0x0000, "Ericsson AB"),
         (0x004C, "Apple, Inc."),
         (0x0499, "Ruuvi Innovations Ltd."),
         (
