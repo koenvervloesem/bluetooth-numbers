@@ -2,6 +2,19 @@
 Changelog
 =========
 
+Version 1.1.1 (2023-06-17)
+==========================
+
+This is a small release with updated data.
+
+What's Changed
+--------------
+
+* Update numbers badges to 2023-02-20 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/33
+* Migrate code linting to Ruff, apply fixes by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/34
+* Don't escape strings and fix import blocks by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/35
+* Update Bluetooth numbers to 2023-06-17 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/36
+
 Version 1.1.0 (2023-02-20)
 ==========================
 
