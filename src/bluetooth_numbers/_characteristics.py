@@ -488,6 +488,7 @@ characteristic = UUIDDict(
         UUID("EF680504-9B35-4933-9B10-52FFA9740042"): "Thingy Microphone",
         UUID("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"): "UART RX Characteristic",
         UUID("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"): "UART TX Characteristic",
+        UUID("57A70001-9350-11ED-A1EB-0242AC120002"): "Status Characteristic",
         UUID(
             "E2A00002-EC31-4EC3-A97A-1C34D87E9878",
         ): "Edge Impulse Remote Management RX Characteristic",
