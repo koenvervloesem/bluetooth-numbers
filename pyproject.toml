@@ -19,8 +19,8 @@ fixable = [
   "COM812",  # trailing comma missing
   "RUF001",  # ambiguous Unicode character
 ]
-# Always generate Python 3.7-compatible code
-target-version = "py37"
+# Always generate Python 3.8-compatible code
+target-version = "py38"
 
 src = ["src", "test"]
 
