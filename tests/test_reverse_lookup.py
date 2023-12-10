@@ -9,35 +9,49 @@ def reverse_lookup():
     return ReverseLookup()
 
 
-def test_valid_reverse_lookup(reverse_lookup):
+def test_valid_reverse_lookup(reverse_lookup) -> None:
     """Test terms that should return a Match"""
-    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup("Power", logic="OR")
-    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup("Power Cycling", logic="AND")
-    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup("Power", logic="SUBSTR")
-    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup("Cycling", uuid_types=["service"], logic="OR")
+    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup(
+        "Power", logic="OR"
+    )
+    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup(
+        "Power Cycling", logic="AND"
+    )
+    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup(
+        "Power", logic="SUBSTR"
+    )
+    assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup(
+        "Cycling", uuid_types=["service"], logic="OR"
+    )
 
 
-def test_bad_term_reverse_lookup(reverse_lookup):
+def test_bad_term_reverse_lookup(reverse_lookup) -> None:
     """Test terms that should return an empty set"""
     assert reverse_lookup.lookup("foobar") == set()
     assert reverse_lookup.lookup("foobar", logic="AND") == set()
     assert Match(6168, "Cycling Power", "service") not in reverse_lookup.lookup(
-        "Power FooBar", logic="AND"
+        "Power FooBar",
+        logic="AND",
     )
     assert reverse_lookup.lookup("foobar", logic="SUBSTR") == set()
 
-def test_wrong_uuid_type_reverse_lookup(reverse_lookup):
-        assert Match(6168, "Cycling Power", "service") not in reverse_lookup.lookup("Cycling", uuid_types=["descriptor"],
-                                                                            logic="OR")
+
+def test_wrong_uuid_type_reverse_lookup(reverse_lookup) -> None:
+    assert Match(6168, "Cycling Power", "service") not in reverse_lookup.lookup(
+        "Cycling", uuid_types=["descriptor"], logic="OR"
+    )
 
 
-def test_bad_valid_terms_reverse_lookup(reverse_lookup):
+def test_bad_valid_terms_reverse_lookup(reverse_lookup) -> None:
     assert Match(6168, "Cycling Power", "service") in reverse_lookup.lookup(
-        "Power FooBar", logic="OR"
+        "Power FooBar",
+        logic="OR",
     )
     assert Match(6168, "Cycling Power", "service") not in reverse_lookup.lookup(
-        "Power FooBar", logic="AND"
+        "Power FooBar",
+        logic="AND",
     )
     assert Match(6168, "Cycling Power", "service") not in reverse_lookup.lookup(
-        "Power FooBar", logic="SUBSTR"
+        "Power FooBar",
+        logic="SUBSTR",
     )
