@@ -10,11 +10,14 @@ LOGIC = Literal["OR", "AND", "EXACT"]
 UUID_TYPES = Literal["characteristic", "company", "descriptor", "ouis", "service"]
 UUID_TYPE_DEFAULT = ("characteristic", "company", "descriptor", "ouis", "service")
 
+
 class Match(typing.NamedTuple):
     """Named tuple to hold a UUID and its description."""
+
     uuid: str | UUID | int
     description: str
     uuid_type: str
+
 
 class ReverseLookup:
     """Class to build a reveers lookup index and return the UUIDs for a given term(s)."""
@@ -22,15 +25,20 @@ class ReverseLookup:
     def __init__(self):
         self.index = self._build_index()
 
-    def _build_index(self)-> dict:
+    def _build_index(self) -> dict:
         """Build dictionary (index) of terms to UUIDs.
 
         Returns:
             dict: Dictionary of terms to UUIDs.
-            """
+        """
         reverse_lookup = {}
-        uuid_dicts = ((characteristic, "characteristic"), (company, "company"), (descriptor, "descriptor"),
-                      (oui, "ouis"), (service, "service"))
+        uuid_dicts = (
+            (characteristic, "characteristic"),
+            (company, "company"),
+            (descriptor, "descriptor"),
+            (oui, "ouis"),
+            (service, "service"),
+        )
         for uuid_dict, uuid_type in uuid_dicts:
             for uuid, description in uuid_dict.items():
                 for term in description.lower().split(" "):
@@ -39,8 +47,12 @@ class ReverseLookup:
                     reverse_lookup[term].add(Match(uuid, description, uuid_type))
         return reverse_lookup
 
-    def lookup(self, terms: str, uuid_types: list[UUID_TYPES] = UUID_TYPE_DEFAULT,
-               logic: LOGIC = "OR") -> set:
+    def lookup(
+        self,
+        terms: str,
+        uuid_types: list[UUID_TYPES] = UUID_TYPE_DEFAULT,
+        logic: LOGIC = "OR",
+    ) -> set:
         """Return the UUIDs for a given term(s).
 
         Args:
@@ -50,22 +62,44 @@ class ReverseLookup:
 
         Returns:
             set or Match, named tuples, (uuid, description, uuid_type)
+
+        Examples:
+            >>> from bluetooth_numbers.reverse_lookup import ReverseLookup
+            >>> rl = ReverseLookup()
+            >>> rl.lookup("Cycling Power")
+            {Match(uuid='00:05:5A', description='Power Dsine Ltd.', uuid_type='ouis'),
+            Match(uuid='00:05:F2', description='Power R, Inc.', uuid_type='ouis'),
+            Match(uuid='00:07:5E', description='Ametek Power Instruments', uuid_type='ouis'),
+            ...
+            }
+            >>> rl.lookup("Cycling Power", logic="AND")
+            {Match(uuid=6168, description='Cycling Power', uuid_type='service'),
+             Match(uuid=10851, description='Cycling Power Measurement', uuid_type='characteristic'),
+             Match(uuid=10852, description='Cycling Power Vector', uuid_type='characteristic'),
+             Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic'),
+             Match(uuid=10854, description='Cycling Power Control Point', uuid_type='characteristic')}
+            >>> rl.lookup("Power Feature", uuid_types=['characteristic'], logic="EXACT")
+            {Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic')}
         """
         terms_set = set(terms.lower().split(" "))
         results = set()
         if logic == "OR":
             """For every term in the string add the UUIDs to the results set."""
             for term in terms_set:
-                results.update(m for m in self.index.get(term, set())
-                               if m.uuid_type in uuid_types)
+                results.update(
+                    m for m in self.index.get(term, set()) if m.uuid_type in uuid_types
+                )
         elif logic == "AND":
             """Every term in the terms string must be in the description."""
-            print(f"uuid_types: {uuid_types}")
-            print(f"terms_set: {terms_set}")
             for term in terms_set:
-                term_matches = set(m for m in self.index.get(term, set()) if
-                                            terms_set.issubset(set(m for m in m.description.lower().split(" "))) and m.uuid_type in uuid_types)
-                print(f"term_matches: {term_matches}")
+                term_matches = set(
+                    m
+                    for m in self.index.get(term, set())
+                    if terms_set.issubset(
+                        set(m for m in m.description.lower().split(" "))
+                    )
+                    and m.uuid_type in uuid_types
+                )
                 if not results:
                     results.update(term_matches)
                 else:
@@ -74,6 +108,10 @@ class ReverseLookup:
             """The description must match the terms string exactly."""
             lower_term_str = terms.lower()
             for term in terms_set:
-                results.update(m for m in self.index.get(term, set()) if
-                               lower_term_str in m.description.lower() and m.uuid_type in uuid_types)
+                results.update(
+                    m
+                    for m in self.index.get(term, set())
+                    if lower_term_str in m.description.lower()
+                    and m.uuid_type in uuid_types
+                )
         return results
