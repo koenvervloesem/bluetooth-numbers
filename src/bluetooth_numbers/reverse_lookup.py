@@ -6,7 +6,7 @@ from uuid import UUID
 
 from bluetooth_numbers import characteristic, company, descriptor, oui, service
 
-LOGIC = Literal["OR", "AND", "EXACT"]
+LOGIC = Literal["OR", "AND", "SUBSTR"]
 UUID_TYPES = Literal["characteristic", "company", "descriptor", "ouis", "service"]
 UUID_TYPE_DEFAULT = ("characteristic", "company", "descriptor", "ouis", "service")
 
@@ -58,7 +58,7 @@ class ReverseLookup:
         Args:
             terms: String with the term(s) to search for.
             uuid_types: List of UUID types to search in.
-            logic: Search logic to use. Can be "OR", "AND" or "EXACT".
+            logic: Search logic to use. Can be "OR", "AND" or "SUBSTR".
 
         Returns:
             set or Match, named tuples, (uuid, description, uuid_type)
@@ -78,7 +78,7 @@ class ReverseLookup:
              Match(uuid=10852, description='Cycling Power Vector', uuid_type='characteristic'),
              Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic'),
              Match(uuid=10854, description='Cycling Power Control Point', uuid_type='characteristic')}
-            >>> rl.lookup("Power Feature", uuid_types=['characteristic'], logic="EXACT")
+            >>> rl.lookup("Power Feature", uuid_types=['characteristic'], logic="SUBSTR")
             {Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic')}
         """
         terms_set = set(terms.lower().split(" "))
@@ -104,8 +104,8 @@ class ReverseLookup:
                     results.update(term_matches)
                 else:
                     results.intersection_update(term_matches)
-        elif logic == "EXACT":
-            """The description must match the terms string exactly."""
+        elif logic == "SUBSTR":
+            """The description must match the a substring of the description."""
             lower_term_str = terms.lower()
             for term in terms_set:
                 results.update(
