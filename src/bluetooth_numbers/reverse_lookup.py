@@ -7,8 +7,8 @@ from uuid import UUID
 from bluetooth_numbers import characteristic, company, descriptor, oui, service
 
 LOGIC = Literal["OR", "AND", "SUBSTR"]
-UUID_TYPES = Literal["characteristic", "company", "descriptor", "ouis", "service"]
-UUID_TYPE_DEFAULT = ("characteristic", "company", "descriptor", "ouis", "service")
+UUID_TYPES = Literal["characteristic", "company", "descriptor", "oui", "service"]
+UUID_TYPE_DEFAULT = ("characteristic", "company", "descriptor", "oui", "service")
 
 
 class Match(typing.NamedTuple):
