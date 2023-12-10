@@ -64,14 +64,11 @@ class ReverseLookup:
             set or Match, named tuples, (uuid, description, uuid_type)
 
         Examples:
-            >>> from bluetooth_numbers.reverse_lookup import ReverseLookup
+            >>> from bluetooth_numbers.reverse_lookup import ReverseLookup, Match
             >>> rl = ReverseLookup()
-            >>> rl.lookup("Cycling Power")
-            {Match(uuid='00:05:5A', description='Power Dsine Ltd.', uuid_type='ouis'),
-            Match(uuid='00:05:F2', description='Power R, Inc.', uuid_type='ouis'),
-            Match(uuid='00:07:5E', description='Ametek Power Instruments', uuid_type='ouis'),
-            ...
-            }
+            >>> matches = rl.lookup("Cycling Power")
+            >>> Match('00:05:5A', 'Power Dsine Ltd.', 'ouis') in matches
+            True
             >>> rl.lookup("Cycling Power", logic="AND")
             {Match(uuid=6168, description='Cycling Power', uuid_type='service'),
              Match(uuid=10851, description='Cycling Power Measurement', uuid_type='characteristic'),
