@@ -36,7 +36,7 @@ class ReverseLookup:
             (characteristic, "characteristic"),
             (company, "company"),
             (descriptor, "descriptor"),
-            (oui, "ouis"),
+            (oui, "oui"),
             (service, "service"),
         )
         for uuid_dict, uuid_type in uuid_dicts:
@@ -67,7 +67,7 @@ class ReverseLookup:
             >>> from bluetooth_numbers.reverse_lookup import ReverseLookup, Match
             >>> rl = ReverseLookup()
             >>> matches = rl.lookup("Cycling Power")
-            >>> Match('00:05:5A', 'Power Dsine Ltd.', 'ouis') in matches
+            >>> Match('00:05:5A', 'Power Dsine Ltd.', 'oui') in matches
             True
             >>> rl.lookup("Cycling Power", logic="AND")
             {Match(uuid=6168, description='Cycling Power', uuid_type='service'),
