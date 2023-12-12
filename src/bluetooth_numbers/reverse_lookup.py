@@ -45,8 +45,7 @@ class ReverseLookup:
              uuid_type='characteristic'),
              Match(uuid=10854, description='Cycling Power Control Point',
              uuid_type='characteristic')}
-            >>> rl.lookup("Power Feature", uuid_types=['characteristic'],
-            logic="SUBSTR")
+            >>> rl.lookup("Power Feature", uuid_types=['characteristic'],logic="SUBSTR")
             {Match(uuid=10853, description='Cycling Power Feature',
             uuid_type='characteristic')}
     """
