@@ -1,7 +1,7 @@
 """Reverse lookup class to find UUIDs by their description."""
 from __future__ import annotations
 
-from typing import Literal, NamedTuple, TYPE_CHECKING
+from typing import Literal, NamedTuple, Sequence, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from uuid import UUID
@@ -9,8 +9,13 @@ if TYPE_CHECKING:
 from bluetooth_numbers import characteristic, company, descriptor, oui, service
 
 LOGIC = Literal["OR", "AND", "SUBSTR"]
-UUID_TYPES = Literal["characteristic", "company", "descriptor", "oui", "service"]
-UUID_TYPE_DEFAULT = ("characteristic", "company", "descriptor", "oui", "service")
+UUID_TYPE_DEFAULT: Sequence[str] = (
+    "characteristic",
+    "company",
+    "descriptor",
+    "oui",
+    "service",
+)
 
 
 class Match(NamedTuple):
@@ -50,13 +55,13 @@ class ReverseLookup:
         """Initialize the ReverseLookup class, build index."""
         self.index = self._build_index()
 
-    def _build_index(self) -> dict:
+    def _build_index(self) -> dict[str, set[Match]]:
         """Build dictionary (index) of terms to UUIDs.
 
         Returns:
-            dict: Dictionary of terms to UUIDs.
+            dict: dict[str, set[Match]] .
         """
-        reverse_lookup = {}
+        reverse_lookup: dict[str, set[Match]] = {}
         uuid_dicts = (
             (characteristic, "characteristic"),
             (company, "company"),
@@ -65,7 +70,7 @@ class ReverseLookup:
             (service, "service"),
         )
         for uuid_dict, uuid_type in uuid_dicts:
-            for uuid, description in uuid_dict.items():
+            for uuid, description in uuid_dict.items():  # type: ignore[attr-defined]
                 for term in description.lower().split(" "):
                     if term not in reverse_lookup:
                         reverse_lookup[term] = set()
@@ -75,21 +80,21 @@ class ReverseLookup:
     def lookup(
         self,
         terms: str,
-        uuid_types: list[UUID_TYPES] = UUID_TYPE_DEFAULT,
+        uuid_types: Sequence[str] = UUID_TYPE_DEFAULT,
         logic: LOGIC = "OR",
-    ) -> set:
+    ) -> set[Match]:
         """Return the UUIDs for a given term(s).
 
         Args:
             terms: String with the term(s) to search for.
-            uuid_types: List of UUID types to search in.
+            uuid_types: Sequence of UUID types to search in.
             logic: Search logic to use. Can be "OR", "AND" or "SUBSTR".
 
         Returns:
-            set or Match, named tuples, (uuid, description, uuid_type)
+            set: set[Match]: Set of Match named tuples.
         """
-        terms_set = set(terms.lower().split(" "))
-        results = set()
+        terms_set: set[str] = set(terms.lower().split(" "))
+        results: set[Match] = set()
         if logic == "OR":
             """For every term in the string add the UUIDs to the results set."""
             for term in terms_set:

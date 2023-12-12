@@ -1,7 +1,7 @@
 """Test the bluetooth_numbers.reverse_lookup module."""
 import pytest
 
-from bluetooth_numbers.reverse_lookup import ReverseLookup, Match
+from bluetooth_numbers.reverse_lookup import Match, ReverseLookup
 
 
 @pytest.fixture()
