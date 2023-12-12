@@ -18,6 +18,7 @@ fix = true
 fixable = [
   "COM812",  # trailing comma missing
   "RUF001",  # ambiguous Unicode character
+    "I001", # Import block is un-sorted or un-formatted
 ]
 # Always generate Python 3.8-compatible code
 target-version = "py38"

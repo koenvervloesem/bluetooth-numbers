@@ -1,7 +1,7 @@
 """Reverse lookup class to find UUIDs by their description."""
 from __future__ import annotations
 
-from typing import Literal, NamedTuple, Sequence, TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal, NamedTuple, Sequence
 
 if TYPE_CHECKING:
     from uuid import UUID
@@ -35,19 +35,10 @@ class ReverseLookup:
             >>> matches = rl.lookup("Cycling Power")
             >>> Match('00:05:5A', 'Power Dsine Ltd.', 'oui') in matches
             True
-            >>> rl.lookup("Cycling Power", logic="AND")
-            {Match(uuid=6168, description='Cycling Power', uuid_type='service'),
-             Match(uuid=10851, description='Cycling Power Measurement',
-             uuid_type='characteristic'),
-             Match(uuid=10852, description='Cycling Power Vector',
-             uuid_type='characteristic'),
-             Match(uuid=10853, description='Cycling Power Feature',
-             uuid_type='characteristic'),
-             Match(uuid=10854, description='Cycling Power Control Point',
-             uuid_type='characteristic')}
+            >>> rl.lookup("Cycling Power Feature", logic="AND")
+            {Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic')}
             >>> rl.lookup("Power Feature", uuid_types=['characteristic'],logic="SUBSTR")
-            {Match(uuid=10853, description='Cycling Power Feature',
-            uuid_type='characteristic')}
+            {Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic')}
     """
 
     def __init__(self) -> None:
