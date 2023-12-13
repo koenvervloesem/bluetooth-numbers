@@ -35,10 +35,14 @@ class ReverseLookup:
             >>> matches = rl.lookup("Cycling Power")
             >>> Match('00:05:5A', 'Power Dsine Ltd.', 'oui') in matches
             True
-            >>> rl.lookup("Cycling Power Feature", logic="AND")
-            {Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic')}
-            >>> rl.lookup("Power Feature", uuid_types=['characteristic'],logic="SUBSTR")
-            {Match(uuid=10853, description='Cycling Power Feature', uuid_type='characteristic')}
+            >>> rl.lookup("Cycling Power Feature",
+            ... logic="AND") # doctest: +NORMALIZE_WHITESPACE
+            {Match(uuid=10853, description='Cycling Power Feature',
+            uuid_type='characteristic')}
+            >>> rl.lookup("Power Feature", uuid_types=['characteristic'],
+            ... logic="SUBSTR") # doctest: +NORMALIZE_WHITESPACE
+            {Match(uuid=10853, description='Cycling Power Feature',
+            uuid_type='characteristic')}
     """
 
     def __init__(self) -> None:
