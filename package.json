@@ -1,0 +1,15 @@
+{
+  "urls": [
+    ["__init__.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/__init__.py"],
+    ["_characteristics.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/_characteristics.py"],
+    ["_companies.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/_companies.py"],
+    ["_descriptors.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/_descriptors.py"],
+    ["_ouis.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/_ouis.py"],
+    ["_services.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/_services.py"],
+    ["dicts.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/dicts.py"],
+    ["exceptions.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/exceptions.py"],
+    ["reverse_lookup.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/reverse_lookup.py"],
+    ["utils.py", "github:phreakocious/bluetooth-numbers/src/bluetooth_numbers/utils.py"],
+  ],
+  "version": "0.1"
+}
