@@ -20,10 +20,10 @@ Usage:
 {% endif %}
 from bluetooth_numbers.dicts import UUIDDict
 {{ uuid_dict }} = UUIDDict({ {% for uuid, name in uuids16.items() %}
-    0x{{ uuid }}: "{{ name }}",
+    0x{{ uuid }}: '{{ name }}',
 {%- endfor %}
 {% if uuids128|length > 1 %} {% for uuid, name in uuids128.items() %}
-    UUID("{{ uuid }}"): "{{ name }}",
+    UUID("{{ uuid }}"): '{{ name }}',
 {%- endfor %}
 {% endif %}
 })
