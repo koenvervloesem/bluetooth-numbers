@@ -1,3 +1,4 @@
+# ruff: noqa: RUF001
 """Generate Python modules for Bluetooth numbers."""
 from __future__ import annotations
 
@@ -5,9 +6,11 @@ import json
 import re
 from pathlib import Path
 
+import yaml
 from jinja2 import Environment, FileSystemLoader
 
 DATA_DIR = "data"
+BLUETOOTH_SIG_UUIDS_DIR = f"{DATA_DIR}/bluetooth-sig-public/assigned_numbers/uuids"
 BLUETOOTH_NUMBERS_DIR = f"{DATA_DIR}/bluetooth-numbers-database/v1"
 TEMPLATE_DIR = "templates"
 CODE_DIR = "src/bluetooth_numbers"
@@ -18,6 +21,27 @@ OUI_RE = re.compile(r"^([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2})\s*\(hex\)\s+(.*)\s*
 
 file_loader = FileSystemLoader(TEMPLATE_DIR)
 env = Environment(loader=file_loader, autoescape=False)  # noqa: S701
+
+
+def replace_ambiguous_characters(s: str) -> str:
+    """Replace ambiguous Unicode characters that may prompt RUF001 linter error.
+
+    Args:
+        s (str): input string
+
+    Returns:
+        str: the input with ambiguous characters replaced
+    """
+    return (
+        s.replace(" ", " ")
+        .replace(" ", " ")
+        .replace("，", ",")
+        .replace("）", ")")
+        .replace("（", "(")
+        .replace("‘", "`")
+        .replace("’", "`")
+        .replace("–", "-")
+    )
 
 
 def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
@@ -31,12 +55,12 @@ def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
     """
     uuid16_dict = {}
 
-    with (Path(DATA_DIR) / f"{kind}_uuids.json").open() as json_file:
-        json_data = json.loads(json_file.read())
-        for number in json_data:
+    with Path.open(Path(BLUETOOTH_SIG_UUIDS_DIR) / f"{kind}_uuids.yaml") as yaml_file:
+        yaml_data = yaml.safe_load(yaml_file)
+        for number in yaml_data["uuids"]:
             name = number["name"]
             uuid = number["uuid"]
-            uuid16_dict[uuid] = name
+            uuid16_dict[uuid] = replace_ambiguous_characters(name)
 
     return uuid16_dict
 
@@ -126,7 +150,8 @@ def generate_oui_dictionary() -> dict[str, str]:
 
     with (Path(DATA_DIR) / "oui.txt").open() as txt_file:
         for line in txt_file:
-            extracted = OUI_RE.match(line)
+            cleaned_line = replace_ambiguous_characters(line)
+            extracted = OUI_RE.match(cleaned_line)
             if extracted:
                 oui_dict[extracted.group(1).replace("-", ":")] = extracted.group(2)
 
@@ -148,8 +173,8 @@ def generate_oui_module(oui_dict: dict[str, str]) -> None:
 if __name__ == "__main__":
     # Generate module for service UUIDs
     service_uuid16, service_uuid128 = generate_uuid_dictionaries("service")
-    member_service_uuid16 = generate_uuid16_dictionary("member_service")
-    sdo_service_uuid16 = generate_uuid16_dictionary("sdo_service")
+    member_service_uuid16 = generate_uuid16_dictionary("member")
+    sdo_service_uuid16 = generate_uuid16_dictionary("sdo")
     # Don't let the UUIDs from the Assigned Numbers document overwrite the ones from the
     # Bluetooth Numbers Database because the latter has the names of the services, which
     # give more information than the names of the companies in the Assigned Numbers
