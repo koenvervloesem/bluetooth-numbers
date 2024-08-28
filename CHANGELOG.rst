@@ -2,6 +2,29 @@
 Changelog
 =========
 
+Version 1.1.2 (2024-08-28)
+==========================
+
+This is a small release with updated data.
+
+What's Changed
+--------------
+
+* Update numbers badges to 2023-06-17 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/38
+* Deprecate Python 3.7 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/39
+* Support Python 3.12 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/40
+* Format code with ruff format instead of black by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/41
+* Update use of Ruff by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/45
+* Add Reverse lookup by @vincentdavis in https://github.com/koenvervloesem/bluetooth-numbers/pull/43
+* Update UUIDs via Bluetooth SIG public repo yaml by @jpwright in https://github.com/koenvervloesem/bluetooth-numbers/pull/49
+* Update OUIs to 2024-08-14 by @koenvervloesem in https://github.com/koenvervloesem/bluetooth-numbers/pull/50
+
+New Contributors
+----------------
+
+* @vincentdavis made their first contribution in https://github.com/koenvervloesem/bluetooth-numbers/pull/43
+* @jpwright made their first contribution in https://github.com/koenvervloesem/bluetooth-numbers/pull/49
+
 Version 1.1.1 (2023-06-17)
 ==========================
 
