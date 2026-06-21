@@ -113,6 +113,22 @@ Get the description of an OUI:
 	>>> oui["58:2D:34"]
 	'Qingping Electronics (Suzhou) Co., Ltd'
 
+Get the description of an SDP service class UUID:
+
+.. code-block:: python
+
+	>>> from bluetooth_numbers import service_class
+	>>> service_class[0x1101]
+	'SerialPort'
+
+Get the description of a protocol identifier UUID:
+
+.. code-block:: python
+
+	>>> from bluetooth_numbers import protocol
+	>>> protocol[0x0003]
+	'RFCOMM'
+
 See the `module reference <https://bluetooth-numbers.readthedocs.io/en/latest/api/modules.html>`_ for complete documentation.
 
 .. inclusion-marker-before-license

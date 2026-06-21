@@ -6,7 +6,15 @@ from typing import TYPE_CHECKING, Literal, NamedTuple, Sequence
 if TYPE_CHECKING:
     from uuid import UUID
 
-from bluetooth_numbers import characteristic, company, descriptor, oui, service
+from bluetooth_numbers import (
+    characteristic,
+    company,
+    descriptor,
+    oui,
+    protocol,
+    service,
+    service_class,
+)
 
 LOGIC = Literal["OR", "AND", "SUBSTR"]
 UUID_TYPE_DEFAULT: Sequence[str] = (
@@ -14,7 +22,9 @@ UUID_TYPE_DEFAULT: Sequence[str] = (
     "company",
     "descriptor",
     "oui",
+    "protocol",
     "service",
+    "service_class",
 )
 
 
@@ -61,7 +71,9 @@ class ReverseLookup:
             (company, "company"),
             (descriptor, "descriptor"),
             (oui, "oui"),
+            (protocol, "protocol"),
             (service, "service"),
+            (service_class, "service_class"),
         )
         for uuid_dict, uuid_type in uuid_dicts:
             for uuid, description in uuid_dict.items():  # type: ignore[attr-defined]
