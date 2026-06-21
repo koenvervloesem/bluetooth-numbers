@@ -39,6 +39,18 @@ Get the description of an OUI:
 >>> from bluetooth_numbers import oui
 >>> oui["58:2D:34"]
 'Qingping Electronics (Suzhou) Co., Ltd'
+
+Get the description of an SDP service class UUID:
+
+>>> from bluetooth_numbers import service_class
+>>> service_class[0x1101]
+'SerialPort'
+
+Get the description of a protocol identifier UUID:
+
+>>> from bluetooth_numbers import protocol
+>>> protocol[0x0003]
+'RFCOMM'
 """
 
 # Public API for easier importing
@@ -46,9 +58,19 @@ from ._characteristics import characteristic
 from ._companies import company
 from ._descriptors import descriptor
 from ._ouis import oui
+from ._protocols import protocol
+from ._service_classes import service_class
 from ._services import service
 
-__all__ = ["characteristic", "company", "descriptor", "oui", "service"]
+__all__ = [
+    "characteristic",
+    "company",
+    "descriptor",
+    "oui",
+    "protocol",
+    "service",
+    "service_class",
+]
 
 from importlib.metadata import PackageNotFoundError, version  # pragma: no cover
 

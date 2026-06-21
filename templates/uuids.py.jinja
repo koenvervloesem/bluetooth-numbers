@@ -14,7 +14,11 @@ Usage:
 >>> characteristic[UUID("6E400002-B5A3-F393-E0A9-E50E24DCCA9E")]
 'UART RX Characteristic'{% elif uuid_dict == 'descriptor' %}>>> from bluetooth_numbers import descriptor
 >>> descriptor[0x2901]
-'Characteristic User Descriptor'{% endif %}
+'Characteristic User Descriptor'{% elif uuid_dict == 'service_class' %}>>> from bluetooth_numbers import service_class
+>>> service_class[0x1101]
+'SerialPort'{% elif uuid_dict == 'protocol' %}>>> from bluetooth_numbers import protocol
+>>> protocol[0x0003]
+'RFCOMM'{% endif %}
 """
 {% if uuids128|length > 1 %}from uuid import UUID
 {% endif %}

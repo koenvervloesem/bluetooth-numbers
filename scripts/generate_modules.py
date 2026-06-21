@@ -44,23 +44,33 @@ def replace_ambiguous_characters(s: str) -> str:
     )
 
 
-def generate_uuid16_dictionary(kind: str) -> dict[int, str]:
+def generate_uuid16_dictionary(
+    kind: str,
+    filename: str | None = None,
+) -> dict[int, str]:
     """Generate 16-bit UUID dictionary for a module.
 
     Args:
-        kind (str): Should be "sdo_service".
+        kind (str): Should be "member", "sdo", "service_class" or "protocol".
+        filename (str | None): The YAML file to read, relative to the Assigned Numbers
+          UUIDs directory. Defaults to ``{kind}_uuids.yaml``.
 
     Returns:
         dict[int, str]: A dict with 16-bit UUIDs as keys.
     """
     uuid16_dict = {}
 
-    with Path.open(Path(BLUETOOTH_SIG_UUIDS_DIR) / f"{kind}_uuids.yaml") as yaml_file:
+    yaml_filename = filename or f"{kind}_uuids.yaml"
+    with Path.open(Path(BLUETOOTH_SIG_UUIDS_DIR) / yaml_filename) as yaml_file:
         yaml_data = yaml.safe_load(yaml_file)
         for number in yaml_data["uuids"]:
             name = number["name"]
             uuid = number["uuid"]
-            uuid16_dict[uuid] = replace_ambiguous_characters(name)
+            # YAML parses "0x1101" as the integer 4353; normalize to a 4-digit hex
+            # string so it matches the keys from the Bluetooth Numbers Database (JSON)
+            # and renders correctly in the template.
+            key = f"{uuid:04X}" if isinstance(uuid, int) else uuid
+            uuid16_dict[key] = replace_ambiguous_characters(name)
 
     return uuid16_dict
 
@@ -95,16 +105,20 @@ def generate_uuid_module(
     kind: str,
     uuid16_dict: dict[int, str],
     uuid128_dict: dict[str, str],
+    module: str | None = None,
 ) -> None:
     """Generate Python module for UUIDs.
 
     Args:
-        kind (str): Should be "service", "characteristic", or "descriptor".
+        kind (str): The name of the dict to generate, e.g. "service",
+          "characteristic", "descriptor", "service_class" or "protocol".
         uuid16_dict (dict[int, str]): Dict with 16-bit UUIDs as keys.
         uuid128_dict (dict[str, str]): Dict with 128-bit UUIDs as keys.
+        module (str | None): The module file to write, without leading underscore or
+          ``.py`` suffix. Defaults to ``{kind}s``.
     """
     template = env.get_template(UUID_TEMPLATE)
-    with (Path(CODE_DIR) / f"_{kind}s.py").open("w") as python_file:
+    with (Path(CODE_DIR) / f"_{module or kind + 's'}.py").open("w") as python_file:
         python_file.write(
             template.render(uuids16=uuid16_dict, uuids128=uuid128_dict, uuid_dict=kind),
         )
@@ -202,6 +216,20 @@ if __name__ == "__main__":
     # Generate module for descriptor UUIDs
     descriptor_uuid16, descriptor_uuid128 = generate_uuid_dictionaries("descriptor")
     generate_uuid_module("descriptor", descriptor_uuid16, descriptor_uuid128)
+
+    # Generate module for SDP service class UUIDs (e.g. 0x1101 Serial Port)
+    service_class_uuid16 = generate_uuid16_dictionary(
+        "service_class", "service_class.yaml",
+    )
+    generate_uuid_module(
+        "service_class", service_class_uuid16, {}, module="service_classes",
+    )
+
+    # Generate module for protocol identifier UUIDs (e.g. 0x0003 RFCOMM)
+    protocol_uuid16 = generate_uuid16_dictionary(
+        "protocol", "protocol_identifiers.yaml",
+    )
+    generate_uuid_module("protocol", protocol_uuid16, {}, module="protocols")
 
     # Generate module for Company ID Codes
     cics = generate_cic_dictionary()
